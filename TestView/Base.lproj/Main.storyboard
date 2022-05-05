@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestView" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -25,19 +25,21 @@
                                     <action selector="updateContentModeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="de8-TE-er6"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J18-JH-XCa" customClass="AndesModalPageView" customModule="TestView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J18-JH-XCa" customClass="AndesModalPageViewDefault" customModule="TestView" customModuleProvider="target">
+                                <rect key="frame" x="20" y="98" width="374" height="700"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="EXl-jl-heh"/>
+                                    <constraint firstAttribute="height" constant="700" id="0wB-qI-fsl"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="J18-JH-XCa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GfM-dy-piv"/>
-                            <constraint firstItem="J18-JH-XCa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PD7-2c-HxC"/>
-                            <constraint firstItem="J18-JH-XCa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SMm-D9-DlK"/>
+                            <constraint firstItem="J18-JH-XCa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3wA-V9-A7N"/>
+                            <constraint firstItem="J18-JH-XCa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Y3p-3f-Jbo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J18-JH-XCa" secondAttribute="trailing" id="ZjV-P6-xWe"/>
+                            <constraint firstItem="J18-JH-XCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bZM-x8-nR8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y4d-wA-D3I" secondAttribute="bottom" id="f1Q-jM-dRg"/>
                             <constraint firstItem="y4d-wA-D3I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kyv-kj-OLY"/>
                         </constraints>
@@ -51,6 +53,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

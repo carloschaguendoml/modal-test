@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesModalPageViewDefault" customModule="TestView" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="Root">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Pbk-jd-aGr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CU-em-JQn" customClass="AndesModalPageContentView" customModule="TestView" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="403" placeholder="YES" id="WdJ-ge-ZuH"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dese popayan"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="ibMode" value="tmb44"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1CU-em-JQn" secondAttribute="bottom" id="Kqy-0K-BGp"/>
+                        <constraint firstItem="1CU-em-JQn" firstAttribute="top" secondItem="Pbk-jd-aGr" secondAttribute="top" id="LoD-UH-3Uj"/>
+                        <constraint firstItem="1CU-em-JQn" firstAttribute="leading" secondItem="Pbk-jd-aGr" secondAttribute="leading" id="bqt-0W-5XI"/>
+                        <constraint firstAttribute="trailing" secondItem="1CU-em-JQn" secondAttribute="trailing" constant="175" id="sbk-0l-D2u"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1CU-em-JQn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="PjR-qt-mP4"/>
+                <constraint firstAttribute="bottom" secondItem="Pbk-jd-aGr" secondAttribute="bottom" id="W39-91-Yz8"/>
+                <constraint firstAttribute="trailing" secondItem="Pbk-jd-aGr" secondAttribute="trailing" id="X4s-Fd-7SD"/>
+                <constraint firstItem="Pbk-jd-aGr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gKx-eS-MTR"/>
+                <constraint firstItem="Pbk-jd-aGr" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="hOD-Gv-2QM"/>
+                <constraint firstItem="Pbk-jd-aGr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="lVA-rC-htM"/>
+                <constraint firstItem="Pbk-jd-aGr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tTI-9F-lkY"/>
+            </constraints>
+            <point key="canvasLocation" x="117.59999999999999" y="107.49625187406298"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="PNN" width="918" height="540"/>
+    </resources>
+</document>

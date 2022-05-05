@@ -11,8 +11,9 @@
 		5C73372B2824516800B571E5 /* AndesModalPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73372A2824516800B571E5 /* AndesModalPageContentView.swift */; };
 		5C73372D2824517B00B571E5 /* AndesModalPageContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C73372C2824517B00B571E5 /* AndesModalPageContentView.xib */; };
 		5C73373128245EE300B571E5 /* AndesModalPageImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73373028245EE300B571E5 /* AndesModalPageImageSize.swift */; };
-		5C7337342824782900B571E5 /* AndesModalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7337332824782900B571E5 /* AndesModalPageView.swift */; };
-		5C7337362824784200B571E5 /* AndesModalPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7337352824784200B571E5 /* AndesModalPageView.xib */; };
+		5C7337342824782900B571E5 /* AndesModalPageViewDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7337332824782900B571E5 /* AndesModalPageViewDefault.swift */; };
+		5C7337362824784200B571E5 /* AndesModalPageViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7337352824784200B571E5 /* AndesModalPageViewDefault.xib */; };
+		5CDE4BE7282481BB00559A5E /* AndesModalPageAbstractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE4BE6282481BB00559A5E /* AndesModalPageAbstractView.swift */; };
 		78D979DE2823665E001EEC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D979DD2823665E001EEC87 /* AppDelegate.swift */; };
 		78D979E02823665E001EEC87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D979DF2823665E001EEC87 /* SceneDelegate.swift */; };
 		78D979E22823665E001EEC87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D979E12823665E001EEC87 /* ViewController.swift */; };
@@ -47,8 +48,9 @@
 		5C73372A2824516800B571E5 /* AndesModalPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageContentView.swift; sourceTree = "<group>"; };
 		5C73372C2824517B00B571E5 /* AndesModalPageContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AndesModalPageContentView.xib; sourceTree = "<group>"; };
 		5C73373028245EE300B571E5 /* AndesModalPageImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageImageSize.swift; sourceTree = "<group>"; };
-		5C7337332824782900B571E5 /* AndesModalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageView.swift; sourceTree = "<group>"; };
-		5C7337352824784200B571E5 /* AndesModalPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AndesModalPageView.xib; sourceTree = "<group>"; };
+		5C7337332824782900B571E5 /* AndesModalPageViewDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageViewDefault.swift; sourceTree = "<group>"; };
+		5C7337352824784200B571E5 /* AndesModalPageViewDefault.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AndesModalPageViewDefault.xib; sourceTree = "<group>"; };
+		5CDE4BE6282481BB00559A5E /* AndesModalPageAbstractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageAbstractView.swift; sourceTree = "<group>"; };
 		78D979DA2823665E001EEC87 /* TestView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D979DD2823665E001EEC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78D979DF2823665E001EEC87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,8 +132,9 @@
 		5C733732282477C400B571E5 /* Variations */ = {
 			isa = PBXGroup;
 			children = (
-				5C7337332824782900B571E5 /* AndesModalPageView.swift */,
-				5C7337352824784200B571E5 /* AndesModalPageView.xib */,
+				5C7337332824782900B571E5 /* AndesModalPageViewDefault.swift */,
+				5C7337352824784200B571E5 /* AndesModalPageViewDefault.xib */,
+				5CDE4BE6282481BB00559A5E /* AndesModalPageAbstractView.swift */,
 			);
 			path = Variations;
 			sourceTree = "<group>";
@@ -304,7 +307,7 @@
 				78D979E728236662001EEC87 /* Assets.xcassets in Resources */,
 				5C73372D2824517B00B571E5 /* AndesModalPageContentView.xib in Resources */,
 				78D979E52823665E001EEC87 /* Main.storyboard in Resources */,
-				5C7337362824784200B571E5 /* AndesModalPageView.xib in Resources */,
+				5C7337362824784200B571E5 /* AndesModalPageViewDefault.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +336,8 @@
 				78D979DE2823665E001EEC87 /* AppDelegate.swift in Sources */,
 				78D97A0F2823669F001EEC87 /* AndesModalPageImageView.swift in Sources */,
 				78D979E02823665E001EEC87 /* SceneDelegate.swift in Sources */,
-				5C7337342824782900B571E5 /* AndesModalPageView.swift in Sources */,
+				5CDE4BE7282481BB00559A5E /* AndesModalPageAbstractView.swift in Sources */,
+				5C7337342824782900B571E5 /* AndesModalPageViewDefault.swift in Sources */,
 				5C73373128245EE300B571E5 /* AndesModalPageImageSize.swift in Sources */,
 				5C73372228244A6D00B571E5 /* UIViewXIB.swift in Sources */,
 				5C73372B2824516800B571E5 /* AndesModalPageContentView.swift in Sources */,
