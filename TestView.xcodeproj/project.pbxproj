@@ -264,6 +264,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
+				ORGANIZATIONNAME = "Mercado Libre";
 				TargetAttributes = {
 					78D979D92823665E001EEC87 = {
 						CreatedOnToolsVersion = 13.1;

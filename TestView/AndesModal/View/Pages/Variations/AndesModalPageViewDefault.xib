@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesModalPageViewDefault" customModule="TestView" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesModalPageViewDefault" customModule="TestView" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="1CU-em-JQn" id="eJa-D2-Rrw"/>
+                <outlet property="scrollView" destination="Pbk-jd-aGr" id="qD3-4n-IjA"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="Root">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -31,7 +36,7 @@
                         <constraint firstAttribute="bottom" secondItem="1CU-em-JQn" secondAttribute="bottom" id="Kqy-0K-BGp"/>
                         <constraint firstItem="1CU-em-JQn" firstAttribute="top" secondItem="Pbk-jd-aGr" secondAttribute="top" id="LoD-UH-3Uj"/>
                         <constraint firstItem="1CU-em-JQn" firstAttribute="leading" secondItem="Pbk-jd-aGr" secondAttribute="leading" id="bqt-0W-5XI"/>
-                        <constraint firstAttribute="trailing" secondItem="1CU-em-JQn" secondAttribute="trailing" constant="175" id="sbk-0l-D2u"/>
+                        <constraint firstAttribute="trailing" secondItem="1CU-em-JQn" secondAttribute="trailing" id="sbk-0l-D2u"/>
                     </constraints>
                 </scrollView>
             </subviews>

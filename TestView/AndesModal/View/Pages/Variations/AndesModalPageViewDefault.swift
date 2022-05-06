@@ -7,6 +7,7 @@
 
 import UIKit
 
-class AndesModalPageViewDefault: UIViewXIB {
-
+class AndesModalPageViewDefault: AndesModalPageAbstractView {
+  
+    
 }
