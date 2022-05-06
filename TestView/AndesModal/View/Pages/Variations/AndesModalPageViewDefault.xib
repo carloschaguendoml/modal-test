@@ -26,7 +26,7 @@
                                 <constraint firstAttribute="height" constant="403" placeholder="YES" id="WdJ-ge-ZuH"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dese popayan"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Esto es un mensaje que sale dese popayan"/>
                                 <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
                                 <userDefinedRuntimeAttribute type="string" keyPath="ibMode" value="tmb44"/>
                             </userDefinedRuntimeAttributes>
