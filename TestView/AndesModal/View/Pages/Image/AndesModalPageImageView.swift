@@ -74,7 +74,7 @@ import UIKit
             return .zero
         }
         let height = size.margins.vertical + size.height
-        return CGSize(width: UIView.noIntrinsicMetric, height: height)
+        return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
        
 }
