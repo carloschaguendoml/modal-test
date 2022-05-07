@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable class ScrollableStick: UIScrollView {
+@IBDesignable internal class ScrollableStick: UIScrollView {
     
-    private(set) var imageView = AndesModalPageImageView()
+    private(set) var imageView = AndesModalImageView()
     private(set) var titleLabel = UILabel()
     private(set) var bodyLabel = UILabel()
     
@@ -20,34 +20,37 @@ import UIKit
         }
     }
     
-    @IBInspectable internal var image: UIImage? {
+    @IBInspectable var image: UIImage? {
         get { imageView.image }
         set { imageView.image = newValue}
     }
     
-    @IBInspectable internal var title: String? {
+    @IBInspectable var title: String? {
         get { titleLabel.text }
         set { titleLabel.text = newValue}
     }
     
-    @IBInspectable internal var body: String? {
+    @IBInspectable var body: String? {
         get { bodyLabel.text }
         set { bodyLabel.text = newValue}
     }
     
-    internal var textAlignment: NSTextAlignment! {
+    var textAlignment: NSTextAlignment! {
         didSet {
             titleLabel.textAlignment = textAlignment
             bodyLabel.textAlignment = textAlignment
         }
     }
     
-    internal var imageSize: AndesModalPageImageView.ImageSize {
+    internal var distribution: AndesModalVerticalAlignment = .fill
+    
+    var imageSize: AndesModalImageView.ImageSize {
         get { imageView.size }
         set { imageView.size = newValue}
     }
     
     private var topConstraint: NSLayoutConstraint?
+    private var contentHeight: CGFloat = 0.0
     
     deinit {
         print("Eliminado")
@@ -64,7 +67,9 @@ import UIKit
     }
     
     private func setup() {
+        clipsToBounds = true
         #if DEBUG
+            backgroundColor = .yellow
             imageView.backgroundColor = .red
             titleLabel.backgroundColor = .green
             bodyLabel.backgroundColor = .blue
@@ -92,14 +97,15 @@ import UIKit
         
         
         
-        bodyLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        bodyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        
         bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         
+        
         [imageView, titleLabel, bodyLabel].forEach { view in
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
+            view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         }
         
     }
@@ -121,14 +127,8 @@ import UIKit
     
     override func updateConstraints() {
         super.updateConstraints()
-        print("updateConstraints")
         topConstraint?.constant = layoutMargins.top
     }
-    
-    
-    
-    private var contentHeight: CGFloat = 0.0
-    public var distribution: AndesModalPageAbstractView.Distribution = .center
     
     override public func layoutSubviews() {
         super.layoutSubviews()

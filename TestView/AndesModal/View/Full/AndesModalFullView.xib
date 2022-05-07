@@ -11,8 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesModalFullView" customModule="TestView" customModuleProvider="target">
             <connections>
-                <outlet property="containerView" destination="90J-fA-JyD" id="9zP-1z-mfV"/>
-                <outlet property="contentView" destination="DgI-Fo-JZl" id="jmx-AL-B5E"/>
+                <outlet property="contentView" destination="IZw-1m-RzR" id="fLQ-Ei-JK0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,40 +19,48 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90J-fA-JyD">
-                    <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1iG-Cp-mSu">
+                    <rect key="frame" x="16" y="44" width="358" height="44"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-Fo-JZl" customClass="AndesModalPageViewDefault" customModule="TestView" customModuleProvider="target">
-                            <rect key="frame" x="8" y="8" width="374" height="750"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beL-xU-Mg7">
+                            <rect key="frame" x="314" y="0.0" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="CDW-58-ZMu"/>
+                                <constraint firstAttribute="width" constant="44" id="E87-nC-3ID"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="X"/>
+                            <connections>
+                                <action selector="dissmisAction:" destination="-1" eventType="touchUpInside" id="euL-vJ-jzc"/>
+                            </connections>
+                        </button>
                     </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZw-1m-RzR" customClass="ScrollableStick" customModule="TestView" customModuleProvider="target">
+                    <rect key="frame" x="16" y="88" width="358" height="722"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="DgI-Fo-JZl" firstAttribute="leading" secondItem="90J-fA-JyD" secondAttribute="leadingMargin" id="FBK-Pq-jtd"/>
-                        <constraint firstAttribute="bottomMargin" secondItem="DgI-Fo-JZl" secondAttribute="bottom" id="Vgo-0A-rTu"/>
-                        <constraint firstAttribute="trailingMargin" secondItem="DgI-Fo-JZl" secondAttribute="trailing" id="l5J-rd-Giv"/>
-                        <constraint firstItem="DgI-Fo-JZl" firstAttribute="top" secondItem="90J-fA-JyD" secondAttribute="topMargin" id="rHR-Cj-Pbb"/>
-                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Modal title"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="90J-fA-JyD" secondAttribute="trailing" id="YMd-cy-u2d"/>
-                <constraint firstItem="90J-fA-JyD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="tu2-Fm-try"/>
-                <constraint firstItem="90J-fA-JyD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zZ0-HG-SgL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="90J-fA-JyD" secondAttribute="bottom" id="zrB-UX-gSI"/>
+                <constraint firstItem="1iG-Cp-mSu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BgZ-pt-EFW"/>
+                <constraint firstItem="IZw-1m-RzR" firstAttribute="leading" secondItem="1iG-Cp-mSu" secondAttribute="leading" id="KiM-Sj-czM"/>
+                <constraint firstItem="1iG-Cp-mSu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="NMb-Pn-z1k"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IZw-1m-RzR" secondAttribute="bottom" id="cxT-QN-aoB"/>
+                <constraint firstItem="IZw-1m-RzR" firstAttribute="top" secondItem="1iG-Cp-mSu" secondAttribute="bottom" id="dZE-yL-fmJ"/>
+                <constraint firstItem="IZw-1m-RzR" firstAttribute="trailing" secondItem="1iG-Cp-mSu" secondAttribute="trailing" id="j2x-jP-k3b"/>
+                <constraint firstAttribute="trailing" secondItem="1iG-Cp-mSu" secondAttribute="trailing" constant="16" id="q1x-aV-4Qo"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="102"/>
+            <point key="canvasLocation" x="138.46153846153845" y="101.65876777251184"/>
         </view>
     </objects>
-    <designables>
-        <designable name="DgI-Fo-JZl">
-            <size key="intrinsicContentSize" width="374" height="378"/>
-        </designable>
-    </designables>
     <resources>
+        <image name="PNN" width="918" height="540"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

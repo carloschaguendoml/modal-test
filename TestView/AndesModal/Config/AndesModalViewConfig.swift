@@ -14,11 +14,11 @@ import UIKit
 internal struct AndesModalViewConfig {
     
     var layout: AndesModalHierarchyProtocol
-    var imageSize: AndesModalPageImageView.ImageSize = .ilustration128
+    var imageSize: AndesModalImageView.ImageSize = .ilustration128
     var stickHeader = false
     var stickFooter = false
     var textAlignmet = NSTextAlignment.left
-    var verticalAlignmet = AndesModalPageAbstractView.Distribution.center
+    var verticalAlignmet = AndesModalVerticalAlignment.center
     
     init() {
         layout = AndesModalHierarchyCard()

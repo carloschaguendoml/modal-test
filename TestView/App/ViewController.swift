@@ -11,7 +11,7 @@ struct Page {
     
     let tile: String
     let body: String
-    let header: AndesModalPageImageView.ImageSize
+    let header: AndesModalImageView.ImageSize
     
 }
 
@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ilustrationStyle: UISegmentedControl!
     @IBOutlet weak var verticalAlignmetControl: UISegmentedControl!
+    
+    @IBOutlet weak var textAlignment: UISegmentedControl!
+    
+    var modal: AndesModal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +37,20 @@ class ViewController: UIViewController {
     
     @IBAction func openModalAction(_ sender: Any) {
         
-        let size = AndesModalPageImageView.ImageSize(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb44
-        let vAlignmet = AndesModalPageAbstractView.Distribution(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .center
+        let size = AndesModalImageView.ImageSize(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb44
+        let vAlignmet = AndesModalVerticalAlignment(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .center
+        let textAling = NSTextAlignment(rawValue: textAlignment.selectedSegmentIndex) ?? .left
         
-        AndesModal(
+        modal = AndesModal(
             type: .fullscreen,
             imageSize: size,
             stickHeader: false,
             stickFooter: false,
             vertical: vAlignmet,
+            textAlignmet: textAling,
             pages: [AndesModalPage(title: "Titulo", body: "Contennido")]
-        ).show(in: self)
+        )
+        modal?.show(in: self)
     }
 }
 

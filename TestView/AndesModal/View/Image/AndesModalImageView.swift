@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable internal class AndesModalPageImageView: UIView {
+@IBDesignable internal class AndesModalImageView: UIView {
     
     private let imageView = UIImageView()
     
@@ -58,6 +58,7 @@ import UIKit
             imageView.layer.cornerRadius = 0
             let margins = size.margins
             NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: size.height),
                 imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margins.right),
                 imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margins.left),
                 imageView.topAnchor.constraint(equalTo: topAnchor, constant: margins.top),
@@ -76,7 +77,7 @@ import UIKit
        
 }
 
-extension AndesModalPageImageView {
+extension AndesModalImageView {
     
     @available(*, unavailable, message: "support only to interfaz builder")
     @IBInspectable var ibMode: Int {

@@ -13,7 +13,7 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
 
     @IBOutlet weak var containerView: UIView!
     
-    @IBOutlet weak var contentView: AndesModalPageViewDefault!
+    @IBOutlet weak var contentView: ScrollableStick!
     
     weak var delegate: AndesModalViewDelegate?
     var config: AndesModalViewConfig
@@ -45,13 +45,17 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
     /// Override this method on each Badge View to setup its unique components
     func updateView() {
         self.backgroundColor = config.layout.overlayColor
-        self.componentView.layoutMargins = config.layout.inset
-        self.containerView.clipsToBounds = true
-        self.containerView.layer.masksToBounds = true
-        self.containerView.layer.cornerRadius = config.layout.cornerRadius
-        
-        contentView.contentView.imageSize = config.imageSize
+        contentView.imageSize = config.imageSize
         contentView.distribution = config.verticalAlignmet
+        contentView.textAlignment = config.textAlignmet
+        
+       // self.componentView.layoutMargins = config.layout.inset
+        //self.containerView.clipsToBounds = true
+       // self.containerView.layer.masksToBounds = true
+       // self.containerView.layer.cornerRadius = config.layout.cornerRadius
+        
+        //contentView.contentView.imageSize = config.imageSize
+        //contentView.distribution = config.verticalAlignmet
     }
     
     @IBAction func dissmisAction(_ sender: Any) {

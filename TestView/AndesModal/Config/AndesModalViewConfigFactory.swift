@@ -18,6 +18,7 @@ internal class AndesModalViewConfigFactory {
         config.stickHeader = modal.stickHeader
         config.stickFooter = modal.stickFooter
         config.verticalAlignmet = modal.verticalAlignmet
+        config.textAlignmet =  modal.textAlignmet
         return config
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension AndesModalPageImageView {
+extension AndesModalImageView {
     
     enum ImageSize: Int {
         case tmb44
@@ -15,6 +15,7 @@ extension AndesModalPageImageView {
         case ilustration128
         case ilustration160
         case image
+        case none
         
         var margins: UIEdgeInsets {
             switch self {
@@ -23,6 +24,8 @@ extension AndesModalPageImageView {
             case .tmb44:
                 return UIEdgeInsets(top: 24, left: 24, bottom: 0, right: 24)
             case .image:
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            case .none:
                 return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             }
         }
@@ -34,6 +37,7 @@ extension AndesModalPageImageView {
             case .ilustration160: return 160
             case .tmb44: return 44
             case .image: return 128
+            case .none: return 0
             }
         }
     }
