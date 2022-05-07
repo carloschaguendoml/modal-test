@@ -9,9 +9,9 @@ import UIKit
 
 internal class AndesModalPageContentView: UIViewXIB {
     
-    @IBOutlet weak private var imageView: AndesModalPageImageView!
-    @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var bodyLabel: UILabel!
+    @IBOutlet weak private(set) var imageView: AndesModalPageImageView!
+    @IBOutlet weak private(set) var titleLabel: UILabel!
+    @IBOutlet weak private(set) var bodyLabel: UILabel!
     
     @IBInspectable internal var image: UIImage? {
         get { imageView.image }
@@ -46,7 +46,7 @@ internal class AndesModalPageContentView: UIViewXIB {
 extension AndesModalPageContentView {
     
     @available(*, unavailable, message: "support only to interfaz builder")
-    @IBInspectable var ibMode: String {
+    @IBInspectable var ibMode: Int {
         set {
             print("Set ib mode", newValue)
             guard let mode = AndesModalPageImageView.ImageSize(rawValue: newValue) else {

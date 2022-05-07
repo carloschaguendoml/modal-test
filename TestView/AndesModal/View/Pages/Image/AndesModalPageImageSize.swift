@@ -9,11 +9,11 @@ import UIKit
 
 extension AndesModalPageImageView {
     
-    enum ImageSize: String {
+    enum ImageSize: Int {
+        case tmb44
         case ilustration80
         case ilustration128
         case ilustration160
-        case tmb44
         case image
         
         var margins: UIEdgeInsets {

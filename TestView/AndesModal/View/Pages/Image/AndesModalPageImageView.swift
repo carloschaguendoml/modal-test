@@ -1,6 +1,6 @@
 //
 //  AndesModalPageHeaderView.swift
-//  TestView
+//  AndesUI
 //
 //  Created by Carlos Chaguendo on 4/05/22.
 //
@@ -32,7 +32,6 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
-        print("Coder init")
     }
     
     private func setup() {
@@ -42,11 +41,9 @@ import UIKit
     }
     
     private func updateView() {
-        print("update view")
         imageView.removeFromSuperview()
         imageView.constraints.forEach(imageView.removeConstraint(_:))
         addSubview(imageView)
-
         switch size {
         case .tmb44:
             imageView.layer.cornerRadius = 44/2
@@ -61,9 +58,9 @@ import UIKit
             imageView.layer.cornerRadius = 0
             let margins = size.margins
             NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: topAnchor, constant: margins.top),
                 imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margins.right),
                 imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margins.left),
+                imageView.topAnchor.constraint(equalTo: topAnchor, constant: margins.top),
                 imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margins.bottom)
             ])
         }
@@ -82,7 +79,7 @@ import UIKit
 extension AndesModalPageImageView {
     
     @available(*, unavailable, message: "support only to interfaz builder")
-    @IBInspectable var ibMode: String {
+    @IBInspectable var ibMode: Int {
         set {
             print("Set ib mode", newValue)
             guard let mode = ImageSize(rawValue: newValue) else {
@@ -99,8 +96,6 @@ extension AndesModalPageImageView {
 }
 
 fileprivate extension UIEdgeInsets {
-    
     var horizontal: CGFloat { self.left + self.right }
     var vertical: CGFloat { self.top + self.bottom }
-
 }

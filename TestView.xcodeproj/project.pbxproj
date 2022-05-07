@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C32DC0828257AFF00693A66 /* AndesModalViewConfigFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0628257AFF00693A66 /* AndesModalViewConfigFactory.swift */; };
+		5C32DC0928257AFF00693A66 /* AndesModalViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0728257AFF00693A66 /* AndesModalViewConfig.swift */; };
+		5C32DC0F28257B0F00693A66 /* AndesModalHierarchyFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0A28257B0E00693A66 /* AndesModalHierarchyFullScreen.swift */; };
+		5C32DC1028257B0F00693A66 /* AndesModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0B28257B0E00693A66 /* AndesModalProtocol.swift */; };
+		5C32DC1128257B0F00693A66 /* AndesModalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0C28257B0F00693A66 /* AndesModalFactory.swift */; };
+		5C32DC1228257B0F00693A66 /* AndesModalHierarchyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0D28257B0F00693A66 /* AndesModalHierarchyCard.swift */; };
+		5C32DC1328257B0F00693A66 /* AndesModalHierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC0E28257B0F00693A66 /* AndesModalHierarchy.swift */; };
+		5C32DC1628257B2600693A66 /* AndesModalAbstractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC1428257B2600693A66 /* AndesModalAbstractView.swift */; };
+		5C32DC1728257B2600693A66 /* AndesModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC1528257B2600693A66 /* AndesModalView.swift */; };
+		5C32DC1B28257B3800693A66 /* AndesModalViewDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC1928257B3800693A66 /* AndesModalViewDefault.swift */; };
+		5C32DC1C28257B3800693A66 /* AndesModalViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C32DC1A28257B3800693A66 /* AndesModalViewDefault.xib */; };
+		5C32DC1F282582A100693A66 /* AndesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC1D282582A100693A66 /* AndesModal.swift */; };
+		5C32DC20282582A100693A66 /* AndesModalAccessibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC1E282582A100693A66 /* AndesModalAccessibilityManager.swift */; };
+		5C32DC22282582D700693A66 /* AndesModalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32DC21282582D700693A66 /* AndesModalPage.swift */; };
+		5C46D3A02825C669005892F7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46D39F2825C669005892F7 /* File.swift */; };
+		5C46D3A32825C7CE005892F7 /* AndesModalFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46D3A22825C7CE005892F7 /* AndesModalFullView.swift */; };
+		5C46D3A52825C7E4005892F7 /* AndesModalFullView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C46D3A42825C7E4005892F7 /* AndesModalFullView.xib */; };
+		5C46D3A82825D8CD005892F7 /* ScrollabeStickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46D3A72825D8CD005892F7 /* ScrollabeStickViewController.swift */; };
+		5C46D3AA2825D904005892F7 /* ScrollableStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46D3A92825D904005892F7 /* ScrollableStick.swift */; };
 		5C73372228244A6D00B571E5 /* UIViewXIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73372128244A6D00B571E5 /* UIViewXIB.swift */; };
 		5C73372B2824516800B571E5 /* AndesModalPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73372A2824516800B571E5 /* AndesModalPageContentView.swift */; };
 		5C73372D2824517B00B571E5 /* AndesModalPageContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C73372C2824517B00B571E5 /* AndesModalPageContentView.xib */; };
@@ -44,6 +63,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C32DC0628257AFF00693A66 /* AndesModalViewConfigFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalViewConfigFactory.swift; sourceTree = "<group>"; };
+		5C32DC0728257AFF00693A66 /* AndesModalViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalViewConfig.swift; sourceTree = "<group>"; };
+		5C32DC0A28257B0E00693A66 /* AndesModalHierarchyFullScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalHierarchyFullScreen.swift; sourceTree = "<group>"; };
+		5C32DC0B28257B0E00693A66 /* AndesModalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalProtocol.swift; sourceTree = "<group>"; };
+		5C32DC0C28257B0F00693A66 /* AndesModalFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalFactory.swift; sourceTree = "<group>"; };
+		5C32DC0D28257B0F00693A66 /* AndesModalHierarchyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalHierarchyCard.swift; sourceTree = "<group>"; };
+		5C32DC0E28257B0F00693A66 /* AndesModalHierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalHierarchy.swift; sourceTree = "<group>"; };
+		5C32DC1428257B2600693A66 /* AndesModalAbstractView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalAbstractView.swift; sourceTree = "<group>"; };
+		5C32DC1528257B2600693A66 /* AndesModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalView.swift; sourceTree = "<group>"; };
+		5C32DC1928257B3800693A66 /* AndesModalViewDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalViewDefault.swift; sourceTree = "<group>"; };
+		5C32DC1A28257B3800693A66 /* AndesModalViewDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AndesModalViewDefault.xib; sourceTree = "<group>"; };
+		5C32DC1D282582A100693A66 /* AndesModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModal.swift; sourceTree = "<group>"; };
+		5C32DC1E282582A100693A66 /* AndesModalAccessibilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndesModalAccessibilityManager.swift; sourceTree = "<group>"; };
+		5C32DC21282582D700693A66 /* AndesModalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPage.swift; sourceTree = "<group>"; };
+		5C46D39F2825C669005892F7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		5C46D3A22825C7CE005892F7 /* AndesModalFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalFullView.swift; sourceTree = "<group>"; };
+		5C46D3A42825C7E4005892F7 /* AndesModalFullView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AndesModalFullView.xib; sourceTree = "<group>"; };
+		5C46D3A72825D8CD005892F7 /* ScrollabeStickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollabeStickViewController.swift; sourceTree = "<group>"; };
+		5C46D3A92825D904005892F7 /* ScrollableStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStick.swift; sourceTree = "<group>"; };
 		5C73372128244A6D00B571E5 /* UIViewXIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewXIB.swift; sourceTree = "<group>"; };
 		5C73372A2824516800B571E5 /* AndesModalPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalPageContentView.swift; sourceTree = "<group>"; };
 		5C73372C2824517B00B571E5 /* AndesModalPageContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AndesModalPageContentView.xib; sourceTree = "<group>"; };
@@ -92,9 +130,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C32DC0128257ABF00693A66 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				78D979DD2823665E001EEC87 /* AppDelegate.swift */,
+				78D979DF2823665E001EEC87 /* SceneDelegate.swift */,
+				78D979E12823665E001EEC87 /* ViewController.swift */,
+				78D979E32823665E001EEC87 /* Main.storyboard */,
+				78D979E628236662001EEC87 /* Assets.xcassets */,
+				78D979E828236662001EEC87 /* LaunchScreen.storyboard */,
+				5C46D3A72825D8CD005892F7 /* ScrollabeStickViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5C32DC0228257AD800693A66 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5C32DC0728257AFF00693A66 /* AndesModalViewConfig.swift */,
+				5C32DC0628257AFF00693A66 /* AndesModalViewConfigFactory.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		5C32DC0428257AE700693A66 /* Hierarchy */ = {
+			isa = PBXGroup;
+			children = (
+				5C32DC0C28257B0F00693A66 /* AndesModalFactory.swift */,
+				5C32DC0E28257B0F00693A66 /* AndesModalHierarchy.swift */,
+				5C32DC0D28257B0F00693A66 /* AndesModalHierarchyCard.swift */,
+				5C32DC0A28257B0E00693A66 /* AndesModalHierarchyFullScreen.swift */,
+				5C32DC0B28257B0E00693A66 /* AndesModalProtocol.swift */,
+			);
+			path = Hierarchy;
+			sourceTree = "<group>";
+		};
+		5C32DC0528257AED00693A66 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
+		5C32DC1828257B2F00693A66 /* Full */ = {
+			isa = PBXGroup;
+			children = (
+				5C46D3A22825C7CE005892F7 /* AndesModalFullView.swift */,
+				5C46D3A42825C7E4005892F7 /* AndesModalFullView.xib */,
+			);
+			path = Full;
+			sourceTree = "<group>";
+		};
+		5C46D39E2825C65E005892F7 /* ExTmp */ = {
+			isa = PBXGroup;
+			children = (
+				5C46D39F2825C669005892F7 /* File.swift */,
+			);
+			path = ExTmp;
+			sourceTree = "<group>";
+		};
+		5C46D3A12825C79D005892F7 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				5C32DC1928257B3800693A66 /* AndesModalViewDefault.swift */,
+				5C32DC1A28257B3800693A66 /* AndesModalViewDefault.xib */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		5C46D3A62825D80D005892F7 /* SitckyScroll */ = {
+			isa = PBXGroup;
+			children = (
+				5C46D3A92825D904005892F7 /* ScrollableStick.swift */,
+			);
+			path = SitckyScroll;
+			sourceTree = "<group>";
+		};
 		5C7337202824482D00B571E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C32DC1428257B2600693A66 /* AndesModalAbstractView.swift */,
+				5C32DC1528257B2600693A66 /* AndesModalView.swift */,
+				5C46D3A12825C79D005892F7 /* Card */,
+				5C32DC1828257B2F00693A66 /* Full */,
 				5C7337252824501000B571E5 /* Pages */,
 				5C73372128244A6D00B571E5 /* UIViewXIB.swift */,
 			);
@@ -163,13 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				78D97A0D28236675001EEC87 /* AndesModal */,
-				78D979DD2823665E001EEC87 /* AppDelegate.swift */,
-				78D979DF2823665E001EEC87 /* SceneDelegate.swift */,
-				78D979E12823665E001EEC87 /* ViewController.swift */,
-				78D979E32823665E001EEC87 /* Main.storyboard */,
-				78D979E628236662001EEC87 /* Assets.xcassets */,
-				78D979E828236662001EEC87 /* LaunchScreen.storyboard */,
+				5C32DC0128257ABF00693A66 /* App */,
+				5C46D39E2825C65E005892F7 /* ExTmp */,
 				78D979EB28236662001EEC87 /* Info.plist */,
+				5C46D3A62825D80D005892F7 /* SitckyScroll */,
 			);
 			path = TestView;
 			sourceTree = "<group>";
@@ -194,6 +309,12 @@
 		78D97A0D28236675001EEC87 /* AndesModal */ = {
 			isa = PBXGroup;
 			children = (
+				5C32DC1D282582A100693A66 /* AndesModal.swift */,
+				5C32DC1E282582A100693A66 /* AndesModalAccessibilityManager.swift */,
+				5C32DC21282582D700693A66 /* AndesModalPage.swift */,
+				5C32DC0228257AD800693A66 /* Config */,
+				5C32DC0428257AE700693A66 /* Hierarchy */,
+				5C32DC0528257AED00693A66 /* Type */,
 				5C7337202824482D00B571E5 /* View */,
 			);
 			path = AndesModal;
@@ -304,8 +425,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C32DC1C28257B3800693A66 /* AndesModalViewDefault.xib in Resources */,
 				78D979EA28236662001EEC87 /* LaunchScreen.storyboard in Resources */,
 				78D979E728236662001EEC87 /* Assets.xcassets in Resources */,
+				5C46D3A52825C7E4005892F7 /* AndesModalFullView.xib in Resources */,
 				5C73372D2824517B00B571E5 /* AndesModalPageContentView.xib in Resources */,
 				78D979E52823665E001EEC87 /* Main.storyboard in Resources */,
 				5C7337362824784200B571E5 /* AndesModalPageViewDefault.xib in Resources */,
@@ -333,15 +456,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C46D3A82825D8CD005892F7 /* ScrollabeStickViewController.swift in Sources */,
+				5C32DC1728257B2600693A66 /* AndesModalView.swift in Sources */,
+				5C46D3A32825C7CE005892F7 /* AndesModalFullView.swift in Sources */,
+				5C32DC0F28257B0F00693A66 /* AndesModalHierarchyFullScreen.swift in Sources */,
+				5C32DC1628257B2600693A66 /* AndesModalAbstractView.swift in Sources */,
 				78D979E22823665E001EEC87 /* ViewController.swift in Sources */,
 				78D979DE2823665E001EEC87 /* AppDelegate.swift in Sources */,
 				78D97A0F2823669F001EEC87 /* AndesModalPageImageView.swift in Sources */,
+				5C46D3A02825C669005892F7 /* File.swift in Sources */,
 				78D979E02823665E001EEC87 /* SceneDelegate.swift in Sources */,
 				5CDE4BE7282481BB00559A5E /* AndesModalPageAbstractView.swift in Sources */,
+				5C32DC22282582D700693A66 /* AndesModalPage.swift in Sources */,
+				5C32DC1028257B0F00693A66 /* AndesModalProtocol.swift in Sources */,
 				5C7337342824782900B571E5 /* AndesModalPageViewDefault.swift in Sources */,
+				5C32DC1128257B0F00693A66 /* AndesModalFactory.swift in Sources */,
+				5C32DC1228257B0F00693A66 /* AndesModalHierarchyCard.swift in Sources */,
 				5C73373128245EE300B571E5 /* AndesModalPageImageSize.swift in Sources */,
+				5C32DC1B28257B3800693A66 /* AndesModalViewDefault.swift in Sources */,
+				5C32DC1328257B0F00693A66 /* AndesModalHierarchy.swift in Sources */,
+				5C32DC20282582A100693A66 /* AndesModalAccessibilityManager.swift in Sources */,
+				5C32DC1F282582A100693A66 /* AndesModal.swift in Sources */,
+				5C32DC0928257AFF00693A66 /* AndesModalViewConfig.swift in Sources */,
 				5C73372228244A6D00B571E5 /* UIViewXIB.swift in Sources */,
+				5C46D3AA2825D904005892F7 /* ScrollableStick.swift in Sources */,
 				5C73372B2824516800B571E5 /* AndesModalPageContentView.swift in Sources */,
+				5C32DC0828257AFF00693A66 /* AndesModalViewConfigFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
