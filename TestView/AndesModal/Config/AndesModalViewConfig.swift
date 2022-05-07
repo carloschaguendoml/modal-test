@@ -20,6 +20,8 @@ internal struct AndesModalViewConfig {
     var textAlignmet = NSTextAlignment.left
     var verticalAlignmet = AndesModalVerticalAlignment.center
     
+    var content: [AndesModalPage] = []
+    
     init() {
         layout = AndesModalHierarchyCard()
     }

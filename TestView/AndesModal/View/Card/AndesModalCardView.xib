@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesModalCardView" customModule="AndesUI">
+            <connections>
+                <outlet property="contentView" destination="XuU-Xq-LbN" id="qsr-h0-xRr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="536"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lkh-9d-92p">
+                    <rect key="frame" x="36" y="72.5" width="219" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okE-V4-aN8">
+                            <rect key="frame" x="0.0" y="0.0" width="219" height="44"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="dissmisAction:" destination="-1" eventType="touchUpInside" id="0a9-Iz-G1s"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="sXB-9w-dlo"/>
+                    </constraints>
+                </stackView>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuU-Xq-LbN" customClass="AndesModalBodyView" customModule="TestView" customModuleProvider="target">
+                    <rect key="frame" x="36" y="116.5" width="219" height="303"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="303" placeholder="YES" id="6Ss-hj-LOa"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="lkh-9d-92p" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="0u9-6p-bHE"/>
+                <constraint firstItem="lkh-9d-92p" firstAttribute="leading" secondItem="XuU-Xq-LbN" secondAttribute="leading" id="ASi-fN-GNl"/>
+                <constraint firstItem="XuU-Xq-LbN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bga-sR-toJ"/>
+                <constraint firstItem="XuU-Xq-LbN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="20" id="D7J-vP-2Xy"/>
+                <constraint firstItem="XuU-Xq-LbN" firstAttribute="top" secondItem="lkh-9d-92p" secondAttribute="bottom" id="UbF-n0-oEn"/>
+                <constraint firstAttribute="trailingMargin" secondItem="XuU-Xq-LbN" secondAttribute="trailing" constant="20" id="WTW-dR-3mv"/>
+                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XuU-Xq-LbN" secondAttribute="bottom" constant="20" id="kpI-0f-yoS"/>
+                <constraint firstItem="lkh-9d-92p" firstAttribute="trailing" secondItem="XuU-Xq-LbN" secondAttribute="trailing" id="wpT-Z8-QPw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="309.4202898550725" y="-3.3482142857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="PNN" width="918" height="540"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -48,6 +48,8 @@ import UIKit
         }
     }
     
+    var pages: [AndesModalPage] = []
+    
     var accessibilityManager: AndesModalAccessibilityManager?
     
     override public func accessibilityActivate() -> Bool {
@@ -75,6 +77,7 @@ import UIKit
         self.imageSize = imageSize
         self.verticalAlignmet = vertical
         self.textAlignmet = textAlignmet
+        self.pages = pages
         super.init()
         self.hierarchy = type
         setup()
@@ -102,7 +105,7 @@ import UIKit
             case.fullscreen:
             return AndesModalFullView(withConfig: config)
         case .card:
-            return AndesModalViewDefault(withConfig: config)
+            return AndesModalCardView(withConfig: config)
         }
       
     }

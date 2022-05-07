@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable internal class ScrollableStick: UIScrollView {
+@IBDesignable internal class AndesModalBodyView: UIScrollView {
     
     private(set) var imageView = AndesModalImageView()
     private(set) var titleLabel = UILabel()
@@ -69,10 +69,10 @@ import UIKit
     private func setup() {
         clipsToBounds = true
         #if DEBUG
-            backgroundColor = .yellow
-            imageView.backgroundColor = .red
-            titleLabel.backgroundColor = .green
-            bodyLabel.backgroundColor = .blue
+//            backgroundColor = .yellow
+//            imageView.backgroundColor = .red
+//            titleLabel.backgroundColor = .green
+//            bodyLabel.backgroundColor = .blue
 //            bodyLabel.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         #endif
         
@@ -103,8 +103,10 @@ import UIKit
         bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         
+        titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         
-        [imageView, titleLabel, bodyLabel].forEach { view in
+        [imageView, bodyLabel].forEach { view in
             view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         }
         

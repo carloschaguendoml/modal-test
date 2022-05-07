@@ -9,6 +9,6 @@
 
 import Foundation
 
-class AndesModalViewDefault: AndesModalAbstractView {
+class AndesModalCardView: AndesModalAbstractView {
 
 }
