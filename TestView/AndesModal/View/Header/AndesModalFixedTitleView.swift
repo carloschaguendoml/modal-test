@@ -8,10 +8,10 @@
 
 import UIKit
 
-@IBDesignable internal class AndesModalStickTitleView: UIStackView {
+@IBDesignable internal class AndesModalTitleView: UIStackView {
     
     private let stackView = UIStackView()
-    private let titleLabel = UILabel()
+    let titleLabel = UILabel()
     let closeButton = UIButton()
     
     var title: String? {
@@ -32,6 +32,8 @@ import UIKit
     private func setup() {
         stackView.axis = .horizontal
         stackView.alignment = .center
+        stackView.spacing = 8
+        
         closeButton.setTitle("X", for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
         closeButton.backgroundColor = tintColor.withAlphaComponent(0.2)
@@ -54,7 +56,7 @@ import UIKit
 //            closeButton.heightAnchor.constraint(equalToConstant: 44)
         ])
         closeButton.layer.masksToBounds = true
-        
+        titleLabel.font = UIFont.systemFont(ofSize: 24)
     }
     
     func showShadown() {

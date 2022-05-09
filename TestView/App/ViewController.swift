@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textContent: UISegmentedControl!
     
     var modal: AndesModal?
+    @IBOutlet weak var fixHeader: UISwitch!
     
    
     let largeText = """
@@ -72,11 +73,11 @@ class ViewController: UIViewController {
         modal = AndesModal(
             type: ty,
             imageSize: size,
-            stickHeader: false,
+            stickHeader: fixHeader.isOn,
             stickFooter: false,
             vertical: vAlignmet,
             textAlignmet: textAling,
-            pages: [AndesModalPage(title: "Titulo", body: text)]
+            pages: [AndesModalPage(title: "This is a multiline modal title and it is used as an exmaple of a long text.", body: text)]
         )
         modal?.show(in: self)
     }

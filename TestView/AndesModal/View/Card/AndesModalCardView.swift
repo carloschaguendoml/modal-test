@@ -10,5 +10,11 @@
 import Foundation
 
 class AndesModalCardView: AndesModalAbstractView {
+    
+    override func updateView() {
+        super.updateView()
+        // Los card tiene el boton de cerrar por fuera del body
+        contentView.allowCloseButton = false
+    }
 
 }

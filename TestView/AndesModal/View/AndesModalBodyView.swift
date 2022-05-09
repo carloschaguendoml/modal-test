@@ -10,14 +10,14 @@ import UIKit
 
 @IBDesignable internal class AndesModalBodyView: UIScrollView {
     
-    private(set) var fixedTitleView = AndesModalStickTitleView()
+    private(set) var fixedTitleView = AndesModalTitleView()
     private(set) var imageView = AndesModalImageView()
-    private(set) var titleLabel = UILabel()
+    private(set) var titleView = AndesModalTitleView()
     private(set) var bodyLabel = UILabel()
     
     @IBInspectable var isStickTitleEnabled = true {
         didSet {
-            setupTopConstraintIfNeeded()
+            updateLayout()
         }
     }
     
@@ -27,8 +27,8 @@ import UIKit
     }
     
     @IBInspectable var title: String? {
-        get { titleLabel.text }
-        set { titleLabel.text = newValue}
+        get { titleView.titleLabel.text }
+        set { titleView.titleLabel.text = newValue}
     }
     
     @IBInspectable var body: String? {
@@ -36,9 +36,14 @@ import UIKit
         set { bodyLabel.text = newValue}
     }
     
+    @IBInspectable var allowCloseButton: Bool {
+        get { !fixedTitleView.closeButton.isHidden }
+        set { fixedTitleView.closeButton.isHidden = !newValue}
+    }
+    
     var textAlignment: NSTextAlignment! {
         didSet {
-            titleLabel.textAlignment = textAlignment
+            titleView.titleLabel.textAlignment = textAlignment
             bodyLabel.textAlignment = textAlignment
         }
     }
@@ -70,7 +75,18 @@ import UIKit
     private func setup() {
         clipsToBounds = true
         delegate = self
+        
+        // La ilustracion(full) tiene que llegar hasta el borde
+        layoutMargins.top = 0
+        layoutMargins.left = 40
+        layoutMargins.right = 40
+        layoutMargins.bottom = 34
+        
+        fixedTitleView.preservesSuperviewLayoutMargins = false
+        fixedTitleView.layoutMargins.left = layoutMargins.left
+        fixedTitleView.layoutMargins.right = layoutMargins.right
         fixedTitleView.backgroundColor = .clear
+        
         #if DEBUG
 
 //            backgroundColor = .yellow
@@ -80,55 +96,51 @@ import UIKit
 //            bodyLabel.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         #endif
         
-        fixedTitleView.preservesSuperviewLayoutMargins = true
-        
         imageView.size = .tmb44
+        titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
+        titleView.titleLabel.numberOfLines = 0
         bodyLabel.numberOfLines = 0
      
-        
-        [imageView, bodyLabel, titleLabel, fixedTitleView].forEach { view in
+        [imageView, bodyLabel, titleView, fixedTitleView].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(view)
         }
+        
+        
+    }
+    
+    private func updateLayout() {
+        if isStickTitleEnabled {
+            setupTopConstraintIfNeeded()
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        } else {
+            topConstraint?.isActive = false
+            imageView.topAnchor.constraint(equalTo: fixedTitleView.bottomAnchor, constant: 10).isActive = true
+        }
+
+        NSLayoutConstraint.activate([
+            fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
+            fixedTitleView.heightAnchor.constraint(equalToConstant: 64),
+
+            imageView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+
+            bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
+            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
+        ])
     }
     
     override func didMoveToSuperview() {
         guard let superview = superview else {
             return
         }
-        setupTopConstraintIfNeeded()
-        
-        NSLayoutConstraint.activate([
-            fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
-            fixedTitleView.heightAnchor.constraint(equalToConstant: 64),
-//            fixedTitleView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            fixedTitleView.topAnchor.constraint(equalTo: topAnchor),
-            
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-
-            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
-        ])
-        
-        
-        // La ilustracion(full) tiene que llegar hasta el borde
-        layoutMargins.top = 0
-        
-        layoutMargins.left = 40
-        layoutMargins.right = 40
-        layoutMargins.bottom = 34
-        
-    
-        fixedTitleView.layoutMargins.left = layoutMargins.left
-        fixedTitleView.layoutMargins.right = layoutMargins.right
+        updateLayout()
     }
     
     /// Habilita un constraint con el margen superior segun la propiedad `isStickTitleEnabled`
@@ -146,11 +158,6 @@ import UIKit
         topConstraint?.priority = .required
     }
     
-    override func updateConstraints() {
-        super.updateConstraints()
-        topConstraint?.constant = layoutMargins.top
-    }
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
@@ -164,7 +171,18 @@ import UIKit
         
         switch distribution {
         case .fill: ()
-            contentInset.top = fixedTitleView.frame.height
+            switch imageSize {
+            case .none:
+                titleView.closeButton.isHidden = false
+                titleView.closeButton.alpha = 0
+                contentInset.top = 0
+            default:
+                contentInset.top = fixedTitleView.frame.height
+                titleView.closeButton.isHidden = true
+                titleView.closeButton.alpha = 1
+            }
+        
+            
         case .center:
             /// El contenido debe tener menor tamanio al del scroll para poderlo centrar verticalemente
             if contentHeight < bounds.size.height  {
@@ -183,18 +201,20 @@ import UIKit
 extension AndesModalBodyView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let posY = scrollView.contentOffset.y
-        let titleY = convert(titleLabel.frame, to: fixedTitleView).minY
-        if  titleY <= fixedTitleView.frame.minY  {
-            fixedTitleView.backgroundColor = .white
-            fixedTitleView.title = titleLabel.text
-            fixedTitleView.showShadown()
-        } else {
-            fixedTitleView.backgroundColor = .clear
-            fixedTitleView.title = ""
-            fixedTitleView.hiddeShadown()
+        
+        if isStickTitleEnabled {
+            let posY = scrollView.contentOffset.y
+            let titleY = convert(titleView.frame, to: fixedTitleView).minY
+            if  titleY <= fixedTitleView.frame.minY  {
+                fixedTitleView.backgroundColor = .white
+                fixedTitleView.title = titleView.titleLabel.text
+                fixedTitleView.showShadown()
+            } else {
+                fixedTitleView.backgroundColor = .clear
+                fixedTitleView.title = ""
+                fixedTitleView.hiddeShadown()
+            }
         }
-        print("Scroll y", posY)
         
     }
     
