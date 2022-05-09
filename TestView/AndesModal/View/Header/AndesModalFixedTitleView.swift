@@ -10,8 +10,9 @@ import UIKit
 
 @IBDesignable internal class AndesModalStickTitleView: UIStackView {
     
+    private let stackView = UIStackView()
     private let titleLabel = UILabel()
-    private let closeButton = UIButton()
+    let closeButton = UIButton()
     
     var title: String? {
         get { titleLabel.text }
@@ -29,22 +30,30 @@ import UIKit
     }
     
     private func setup() {
-        preservesSuperviewLayoutMargins = true
+        stackView.axis = .horizontal
+        stackView.alignment = .center
         closeButton.setTitle("X", for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
+        closeButton.backgroundColor = tintColor.withAlphaComponent(0.2)
+        
+        preservesSuperviewLayoutMargins = true
         
         [titleLabel, closeButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            self.addArrangedSubview($0)
+            stackView.addArrangedSubview($0)
         }
-        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-//            closeButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+
             closeButton.widthAnchor.constraint(equalToConstant: 44),
-            closeButton.heightAnchor.constraint(equalToConstant: 44)
+//            closeButton.heightAnchor.constraint(equalToConstant: 44)
         ])
-        
+        closeButton.layer.masksToBounds = true
         
     }
     
@@ -59,7 +68,5 @@ import UIKit
     func hiddeShadown() {
         layer.masksToBounds = true
     }
-    
-    
-    
+   
 }

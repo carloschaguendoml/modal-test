@@ -15,34 +15,12 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1iG-Cp-mSu">
-                    <rect key="frame" x="16" y="44" width="358" height="44"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f6h-9O-oVl">
-                            <rect key="frame" x="314" y="0.0" width="44" height="44"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beL-xU-Mg7">
-                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="CDW-58-ZMu"/>
-                                        <constraint firstAttribute="width" constant="44" id="E87-nC-3ID"/>
-                                    </constraints>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title="X"/>
-                                    <connections>
-                                        <action selector="dissmisAction:" destination="-1" eventType="touchUpInside" id="euL-vJ-jzc"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                </stackView>
-                <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZw-1m-RzR" customClass="AndesModalBodyView" customModule="TestView" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZw-1m-RzR" customClass="AndesModalBodyView" customModule="TestView" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
@@ -54,12 +32,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IZw-1m-RzR" secondAttribute="trailing" id="3ue-yF-H3H"/>
-                <constraint firstItem="1iG-Cp-mSu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BgZ-pt-EFW"/>
                 <constraint firstItem="IZw-1m-RzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JlX-Eh-ccv"/>
-                <constraint firstItem="1iG-Cp-mSu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="NMb-Pn-z1k"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IZw-1m-RzR" secondAttribute="bottom" id="cxT-QN-aoB"/>
-                <constraint firstItem="IZw-1m-RzR" firstAttribute="top" secondItem="1iG-Cp-mSu" secondAttribute="bottom" id="dZE-yL-fmJ"/>
-                <constraint firstAttribute="trailing" secondItem="1iG-Cp-mSu" secondAttribute="trailing" constant="16" id="q1x-aV-4Qo"/>
+                <constraint firstItem="IZw-1m-RzR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="e8x-Va-hWK"/>
             </constraints>
             <point key="canvasLocation" x="138.46153846153845" y="101.65876777251184"/>
         </view>
