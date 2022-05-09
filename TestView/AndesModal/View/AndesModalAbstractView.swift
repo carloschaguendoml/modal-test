@@ -58,6 +58,7 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
         contentView.layer.cornerRadius = config.layout.cornerRadius
         
         contentView.fixedTitleView.closeButton.addTarget(self, action: #selector(dissmisAction(_:)), for: .touchUpInside)
+        contentView.titleView.closeButton.addTarget(self, action: #selector(dissmisAction(_:)), for: .touchUpInside)
     }
     
     @IBAction func dissmisAction(_ sender: Any) {

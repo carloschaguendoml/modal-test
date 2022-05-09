@@ -86,16 +86,8 @@ import UIKit
         fixedTitleView.layoutMargins.left = layoutMargins.left
         fixedTitleView.layoutMargins.right = layoutMargins.right
         fixedTitleView.backgroundColor = .clear
-        
-        #if DEBUG
+    
 
-//            backgroundColor = .yellow
-//            imageView.backgroundColor = .red
-//            titleLabel.backgroundColor = .green
-//            bodyLabel.backgroundColor = .blue
-//            bodyLabel.heightAnchor.constraint(equalToConstant: 1000).isActive = true
-        #endif
-        
         imageView.size = .tmb44
         titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleView.titleLabel.numberOfLines = 0
@@ -105,17 +97,18 @@ import UIKit
             view.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(view)
         }
-        
-        
     }
     
     private func updateLayout() {
         if isStickTitleEnabled {
             setupTopConstraintIfNeeded()
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+            let imageTop = imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0)
+            imageTop.priority = .defaultLow
+            imageTop.isActive = true
         } else {
             topConstraint?.isActive = false
-            imageView.topAnchor.constraint(equalTo: fixedTitleView.bottomAnchor, constant: 10).isActive = true
+            fixedTitleView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            fixedTitleView.bottomAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
         }
 
         NSLayoutConstraint.activate([
@@ -134,13 +127,6 @@ import UIKit
             bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
         ])
-    }
-    
-    override func didMoveToSuperview() {
-        guard let superview = superview else {
-            return
-        }
-        updateLayout()
     }
     
     /// Habilita un constraint con el margen superior segun la propiedad `isStickTitleEnabled`
@@ -168,31 +154,32 @@ import UIKit
             self.invalidateIntrinsicContentSize()
         }
         
-        
-        switch distribution {
-        case .fill: ()
-            switch imageSize {
-            case .none:
+        switch imageSize {
+        case .none:
+            if isStickTitleEnabled {
                 titleView.closeButton.isHidden = false
                 titleView.closeButton.alpha = 0
                 contentInset.top = 0
-            default:
-                contentInset.top = fixedTitleView.frame.height
-                titleView.closeButton.isHidden = true
+            } else {
+                fixedTitleView.isHidden = true
                 titleView.closeButton.alpha = 1
             }
+     
+        default:
+            contentInset.top = fixedTitleView.frame.height
+            titleView.closeButton.isHidden = true
+            titleView.closeButton.alpha = 1
+        }
         
-            
-        case .center:
+        if case .center = distribution {
             /// El contenido debe tener menor tamanio al del scroll para poderlo centrar verticalemente
             if contentHeight < bounds.size.height  {
                 contentInset.top = (bounds.size.height - contentHeight)/2
             }
         }
-        
     }
 
-    /**/
+    /// El contenido tratara de usar el maximo espacio posible antes de comenzar a habilitar scroll
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: contentSize.width, height: contentHeight)
     }
