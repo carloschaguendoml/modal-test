@@ -44,6 +44,12 @@ class ViewController: UIViewController {
         Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
         """
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        displayMode.selectedSegmentIndex = 1
+        textContent.selectedSegmentIndex = 2
+    }
+    
     @IBAction func updateContentModeAction(_ sender: Any) {
 
     }

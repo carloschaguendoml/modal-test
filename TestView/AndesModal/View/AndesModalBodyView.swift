@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable internal class AndesModalBodyView: UIScrollView {
     
+    private(set) var fixedTitleView = AndesModalStickTitleView()
     private(set) var imageView = AndesModalImageView()
     private(set) var titleLabel = UILabel()
     private(set) var bodyLabel = UILabel()
@@ -68,7 +69,10 @@ import UIKit
     
     private func setup() {
         clipsToBounds = true
+        delegate = self
+        fixedTitleView.backgroundColor = .clear
         #if DEBUG
+
 //            backgroundColor = .yellow
 //            imageView.backgroundColor = .red
 //            titleLabel.backgroundColor = .green
@@ -76,10 +80,13 @@ import UIKit
 //            bodyLabel.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         #endif
         
+        fixedTitleView.preservesSuperviewLayoutMargins = true
+        
         imageView.size = .tmb44
         bodyLabel.numberOfLines = 0
+     
         
-        [imageView, bodyLabel, titleLabel].forEach { view in
+        [imageView, bodyLabel, titleLabel, fixedTitleView].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(view)
         }
@@ -92,7 +99,12 @@ import UIKit
         setupTopConstraintIfNeeded()
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
+            fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
+            fixedTitleView.heightAnchor.constraint(equalToConstant: 64),
+//            fixedTitleView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            fixedTitleView.topAnchor.constraint(equalTo: topAnchor),
+            
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
 
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
@@ -105,24 +117,33 @@ import UIKit
             bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
         ])
+        
+        
+        // La ilustracion(full) tiene que llegar hasta el borde
+        layoutMargins.top = 0
+        
         layoutMargins.left = 40
         layoutMargins.right = 40
         layoutMargins.bottom = 34
+        
+    
+        fixedTitleView.layoutMargins.left = layoutMargins.left
+        fixedTitleView.layoutMargins.right = layoutMargins.right
     }
     
     /// Habilita un constraint con el margen superior segun la propiedad `isStickTitleEnabled`
     private func setupTopConstraintIfNeeded() {
-//        guard let superview = superview, topConstraint == nil else {
-//            return
-//        }
-//        if #available(iOS 11.0, *) {
-//            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: frameLayoutGuide.topAnchor)
-//            topConstraint?.isActive = isStickTitleEnabled
-//        } else {
-//            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor)
-//            topConstraint?.isActive = isStickTitleEnabled
-//        }
-//        topConstraint?.priority = .required
+        guard let superview = superview, topConstraint == nil else {
+            return
+        }
+        if #available(iOS 11.0, *) {
+            topConstraint = fixedTitleView.topAnchor.constraint(equalTo: frameLayoutGuide.topAnchor)
+            topConstraint?.isActive = isStickTitleEnabled
+        } else {
+            topConstraint = fixedTitleView.topAnchor.constraint(equalTo: superview.topAnchor)
+            topConstraint?.isActive = isStickTitleEnabled
+        }
+        topConstraint?.priority = .required
     }
     
     override func updateConstraints() {
@@ -134,18 +155,23 @@ import UIKit
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
         contentHeight = contentSize.height + layoutMargins.bottom
-        print(">", [bounds.size, contentHeight])
+        //print(">", [bounds.size, contentHeight])
         if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
-            print(">>>>", bounds.size)
+            //print(">>>>", bounds.size)
             self.invalidateIntrinsicContentSize()
         }
         
-        if case .center = distribution {
+        
+        switch distribution {
+        case .fill: ()
+            contentInset.top = fixedTitleView.frame.height
+        case .center:
             /// El contenido debe tener menor tamanio al del scroll para poderlo centrar verticalemente
             if contentHeight < bounds.size.height  {
                 contentInset.top = (bounds.size.height - contentHeight)/2
             }
         }
+        
     }
 
     /**/
@@ -154,3 +180,22 @@ import UIKit
     }
 }
 
+extension AndesModalBodyView: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let posY = scrollView.contentOffset.y
+        let titleY = convert(titleLabel.frame, to: fixedTitleView).minY
+        if  titleY <= fixedTitleView.frame.minY  {
+            fixedTitleView.backgroundColor = .white
+            fixedTitleView.title = titleLabel.text
+            fixedTitleView.showShadown()
+        } else {
+            fixedTitleView.backgroundColor = .clear
+            fixedTitleView.title = ""
+            fixedTitleView.hiddeShadown()
+        }
+        print("Scroll y", posY)
+        
+    }
+    
+}
