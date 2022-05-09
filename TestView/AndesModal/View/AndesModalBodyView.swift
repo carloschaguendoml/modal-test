@@ -147,7 +147,7 @@ import UIKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
-        contentHeight = contentSize.height + layoutMargins.bottom
+        contentHeight = contentSize.height + layoutMargins.vertical
         //print(">", [bounds.size, contentHeight])
         if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
             //print(">>>>", bounds.size)

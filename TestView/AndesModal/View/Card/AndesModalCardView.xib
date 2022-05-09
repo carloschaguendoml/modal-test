@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,13 +28,27 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwd-SX-89S">
+                    <rect key="frame" x="211" y="64.5" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="GQf-Gd-cVy"/>
+                        <constraint firstAttribute="height" constant="44" id="SxN-n8-GGx"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="X"/>
+                    <connections>
+                        <action selector="dissmisAction:" destination="-1" eventType="touchUpInside" id="9VM-gI-KWa"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="XuU-Xq-LbN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bga-sR-toJ"/>
                 <constraint firstItem="XuU-Xq-LbN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="20" id="D7J-vP-2Xy"/>
-                <constraint firstItem="XuU-Xq-LbN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="IpH-kH-PaC"/>
+                <constraint firstItem="XuU-Xq-LbN" firstAttribute="top" secondItem="fwd-SX-89S" secondAttribute="bottom" constant="8" id="FuZ-La-Fqq"/>
+                <constraint firstItem="fwd-SX-89S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="KVq-kp-9CX"/>
                 <constraint firstAttribute="trailingMargin" secondItem="XuU-Xq-LbN" secondAttribute="trailing" constant="20" id="WTW-dR-3mv"/>
                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XuU-Xq-LbN" secondAttribute="bottom" constant="20" id="kpI-0f-yoS"/>
+                <constraint firstItem="fwd-SX-89S" firstAttribute="trailing" secondItem="XuU-Xq-LbN" secondAttribute="trailing" id="pNr-Hi-RAd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="309.4202898550725" y="-3.3482142857142856"/>

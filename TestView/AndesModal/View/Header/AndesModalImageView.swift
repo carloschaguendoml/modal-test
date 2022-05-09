@@ -96,7 +96,7 @@ extension AndesModalImageView {
     
 }
 
-fileprivate extension UIEdgeInsets {
+extension UIEdgeInsets {
     var horizontal: CGFloat { self.left + self.right }
     var vertical: CGFloat { self.top + self.bottom }
 }
