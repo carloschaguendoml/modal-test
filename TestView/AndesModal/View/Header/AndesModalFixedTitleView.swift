@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable internal class AndesModalTitleView: UIStackView {
+@IBDesignable internal class AndesModalTitleView: UIView {
     
     private let stackView = UIStackView()
     let titleLabel = UILabel()
@@ -17,6 +17,11 @@ import UIKit
     var title: String? {
         get { titleLabel.text }
         set { titleLabel.text = newValue }
+    }
+    
+    var alignment: UIStackView.Alignment {
+        get { stackView.alignment }
+        set { stackView.alignment = newValue }
     }
     
     init() {
@@ -33,19 +38,26 @@ import UIKit
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = 8
+        stackView.preservesSuperviewLayoutMargins = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         closeButton.setTitle("X", for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
         closeButton.backgroundColor = tintColor.withAlphaComponent(0.2)
+        closeButton.layer.masksToBounds = true
         
-        preservesSuperviewLayoutMargins = true
+        titleLabel.font = UIFont.systemFont(ofSize: 24)
+        
+        layoutMargins = .zero
+        preservesSuperviewLayoutMargins = false
+        translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
         
         [titleLabel, closeButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             stackView.addArrangedSubview($0)
         }
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
+        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
@@ -53,10 +65,7 @@ import UIKit
             stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
 
             closeButton.widthAnchor.constraint(equalToConstant: 44),
-//            closeButton.heightAnchor.constraint(equalToConstant: 44)
         ])
-        closeButton.layer.masksToBounds = true
-        titleLabel.font = UIFont.systemFont(ofSize: 24)
     }
     
     func showShadown() {
@@ -69,6 +78,9 @@ import UIKit
     
     func hiddeShadown() {
         layer.masksToBounds = true
+    }
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: super.intrinsicContentSize.width, height:  isHidden ? 0 : 64)
     }
    
 }

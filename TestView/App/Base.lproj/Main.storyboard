@@ -61,19 +61,21 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dw9-KI-UwW">
-                                        <rect key="frame" x="0.0" y="154" width="121" height="61"/>
+                                        <rect key="frame" x="0.0" y="154" width="291" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Alignment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqX-TZ-bRz">
-                                                <rect key="frame" x="0.0" y="0.0" width="121" height="18"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="291" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-lw-Z7T">
-                                                <rect key="frame" x="0.0" y="30" width="121" height="32"/>
+                                                <rect key="frame" x="0.0" y="30" width="291" height="32"/>
                                                 <segments>
                                                     <segment title="Left"/>
                                                     <segment title="Center"/>
+                                                    <segment title="Right"/>
+                                                    <segment title="Justified"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>

@@ -55,7 +55,6 @@ import UIKit
         set { imageView.size = newValue}
     }
     
-    private var topConstraint: NSLayoutConstraint?
     private var contentHeight: CGFloat = 0.0
     
     deinit {
@@ -78,17 +77,16 @@ import UIKit
         
         // La ilustracion(full) tiene que llegar hasta el borde
         layoutMargins.top = 0
-        layoutMargins.left = 40
-        layoutMargins.right = 40
-        layoutMargins.bottom = 34
+        layoutMargins.left = 24
+        layoutMargins.right = 24
+        layoutMargins.bottom = 24
         
-        fixedTitleView.preservesSuperviewLayoutMargins = false
         fixedTitleView.layoutMargins.left = layoutMargins.left
         fixedTitleView.layoutMargins.right = layoutMargins.right
         fixedTitleView.backgroundColor = .clear
-    
 
         imageView.size = .tmb44
+        titleView.alignment = .top
         titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleView.titleLabel.numberOfLines = 0
         bodyLabel.numberOfLines = 0
@@ -100,28 +98,20 @@ import UIKit
     }
     
     private func updateLayout() {
-        if isStickTitleEnabled {
-            setupTopConstraintIfNeeded()
-            let imageTop = imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0)
-            imageTop.priority = .defaultLow
-            imageTop.isActive = true
-        } else {
-            topConstraint?.isActive = false
-            fixedTitleView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            fixedTitleView.bottomAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
-        }
+        // fata verficar el caso con la distribucion en el centro
+        fixedTitleView.topAnchor.constraint(equalTo: fixedAnchor).isActive = true
 
         NSLayoutConstraint.activate([
             fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
-            fixedTitleView.heightAnchor.constraint(equalToConstant: 64),
-
+            
+            imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
 
             titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             titleView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 26),
 
-            bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
+            bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 24),
             bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
@@ -129,33 +119,27 @@ import UIKit
         ])
     }
     
-    /// Habilita un constraint con el margen superior segun la propiedad `isStickTitleEnabled`
-    private func setupTopConstraintIfNeeded() {
-        guard let superview = superview, topConstraint == nil else {
-            return
-        }
+    private var fixedAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
-            topConstraint = fixedTitleView.topAnchor.constraint(equalTo: frameLayoutGuide.topAnchor)
-            topConstraint?.isActive = isStickTitleEnabled
+            return frameLayoutGuide.topAnchor
         } else {
-            topConstraint = fixedTitleView.topAnchor.constraint(equalTo: superview.topAnchor)
-            topConstraint?.isActive = isStickTitleEnabled
+            guard let superview = superview else {
+                preconditionFailure()
+            }
+            return superview.topAnchor
         }
-        topConstraint?.priority = .required
     }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
         contentHeight = contentSize.height + layoutMargins.vertical
-        //print(">", [bounds.size, contentHeight])
         if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
-            //print(">>>>", bounds.size)
             self.invalidateIntrinsicContentSize()
         }
         
-        switch imageSize {
-        case .none:
+        switch (imageSize, distribution) {
+        case (.none, .fill):
             if isStickTitleEnabled {
                 titleView.closeButton.isHidden = false
                 titleView.closeButton.alpha = 0
@@ -179,7 +163,7 @@ import UIKit
         }
     }
 
-    /// El contenido tratara de usar el maximo espacio posible antes de comenzar a habilitar scroll
+    /// El contenido tratara de usar el maximo espacio posible antes de comenzar a usar el scroll
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: contentSize.width, height: contentHeight)
     }

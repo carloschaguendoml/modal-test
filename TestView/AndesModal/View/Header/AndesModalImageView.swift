@@ -38,6 +38,7 @@ import UIKit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .green
     }
     
     private func updateView() {
