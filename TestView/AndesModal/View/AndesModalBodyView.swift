@@ -91,40 +91,38 @@ import UIKit
         }
         setupTopConstraintIfNeeded()
         
-        let c = titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor)
-            c.isActive = true
-        c.priority = .defaultLow
-        
-        
-        
-        bodyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        
-        bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        
-        titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
-        
-        [imageView, bodyLabel].forEach { view in
-            view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        }
-        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
+        ])
+        layoutMargins.left = 40
+        layoutMargins.right = 40
+        layoutMargins.bottom = 34
     }
     
     /// Habilita un constraint con el margen superior segun la propiedad `isStickTitleEnabled`
     private func setupTopConstraintIfNeeded() {
-        guard let superview = superview, topConstraint == nil else {
-            return
-        }
-        if #available(iOS 11.0, *) {
-            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: frameLayoutGuide.topAnchor)
-            topConstraint?.isActive = isStickTitleEnabled
-        } else {
-            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor)
-            topConstraint?.isActive = isStickTitleEnabled
-        }
-        topConstraint?.priority = .required
+//        guard let superview = superview, topConstraint == nil else {
+//            return
+//        }
+//        if #available(iOS 11.0, *) {
+//            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: frameLayoutGuide.topAnchor)
+//            topConstraint?.isActive = isStickTitleEnabled
+//        } else {
+//            topConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor)
+//            topConstraint?.isActive = isStickTitleEnabled
+//        }
+//        topConstraint?.priority = .required
     }
     
     override func updateConstraints() {
@@ -135,7 +133,7 @@ import UIKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
-        contentHeight = contentSize.height
+        contentHeight = contentSize.height + layoutMargins.bottom
         print(">", [bounds.size, contentHeight])
         if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
             print(">>>>", bounds.size)

@@ -34,10 +34,9 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
     }
 
     func setup() {
-        loadNib()
+       // super.xibSetup()
         translatesAutoresizingMaskIntoConstraints = false
         updateView()
-        pinXibViewToSelf()
     }
 
     /// Override this method on each Badge View to setup its unique components
@@ -51,16 +50,11 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
             contentView.title = source.title
             contentView.body = source.body
         }
-        
-        
-        
+
        // self.componentView.layoutMargins = config.layout.inset
         contentView.clipsToBounds = true
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = config.layout.cornerRadius
-        
-        
-
     }
     
     @IBAction func dissmisAction(_ sender: Any) {
