@@ -98,13 +98,32 @@ import UIKit
     }
     
     private func updateLayout() {
-        // fata verficar el caso con la distribucion en el centro
-        fixedTitleView.topAnchor.constraint(equalTo: fixedAnchor).isActive = true
-
+        titleView.hiddeCloseButton()
+        if case .none = imageSize, isStickTitleEnabled {
+            titleView.reserveSpaceOfCloseButton()
+        }
+        
+        if case .none = imageSize, !isStickTitleEnabled {
+            fixedTitleView.isHidden = true
+            titleView.showCloseButton()
+        }
+        
+        if isStickTitleEnabled {
+            // fata verficar el caso con la distribucion en el centro
+            NSLayoutConstraint.activate([
+                fixedTitleView.topAnchor.constraint(equalTo: topFixedAnchor),
+                imageView.topAnchor.constraint(equalTo: topAnchor)
+            ])
+            contentInset.top = imageSize == .none ? 0 : 64
+        } else {
+            NSLayoutConstraint.activate([
+                fixedTitleView.topAnchor.constraint(equalTo: topAnchor),
+                imageView.topAnchor.constraint(equalTo: fixedTitleView.bottomAnchor)
+            ])
+        }
+        
         NSLayoutConstraint.activate([
             fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
-            
-            imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
 
             titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
@@ -119,40 +138,12 @@ import UIKit
         ])
     }
     
-    private var fixedAnchor: NSLayoutYAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return frameLayoutGuide.topAnchor
-        } else {
-            guard let superview = superview else {
-                preconditionFailure()
-            }
-            return superview.topAnchor
-        }
-    }
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         /// Permite que la vista trate de usar la maxima altura posible antes de habilitar el scroll
         contentHeight = contentSize.height + layoutMargins.vertical
         if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
             self.invalidateIntrinsicContentSize()
-        }
-        
-        switch (imageSize, distribution) {
-        case (.none, .fill):
-            if isStickTitleEnabled {
-                titleView.closeButton.isHidden = false
-                titleView.closeButton.alpha = 0
-                contentInset.top = 0
-            } else {
-                fixedTitleView.isHidden = true
-                titleView.closeButton.alpha = 1
-            }
-     
-        default:
-            contentInset.top = fixedTitleView.frame.height
-            titleView.closeButton.isHidden = true
-            titleView.closeButton.alpha = 1
         }
         
         if case .center = distribution {
@@ -167,6 +158,21 @@ import UIKit
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: contentSize.width, height: contentHeight)
     }
+}
+
+extension UIScrollView {
+    
+     fileprivate var topFixedAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return frameLayoutGuide.topAnchor
+        } else {
+            guard let superview = superview else {
+                preconditionFailure()
+            }
+            return superview.topAnchor
+        }
+    }
+    
 }
 
 extension AndesModalBodyView: UIScrollViewDelegate {

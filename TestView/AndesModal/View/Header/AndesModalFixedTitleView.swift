@@ -79,6 +79,21 @@ import UIKit
     func hiddeShadown() {
         layer.masksToBounds = true
     }
+    
+    func reserveSpaceOfCloseButton() {
+        closeButton.isHidden = false
+        closeButton.alpha = 0
+    }
+    
+    func showCloseButton() {
+        closeButton.isHidden = false
+        closeButton.alpha = 1
+    }
+    
+    func hiddeCloseButton() {
+        closeButton.isHidden = true
+    }
+    
     override var intrinsicContentSize: CGSize {
         return CGSize(width: super.intrinsicContentSize.width, height:  isHidden ? 0 : 64)
     }
