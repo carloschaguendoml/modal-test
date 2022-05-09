@@ -16,9 +16,7 @@ import UIKit
     private(set) var bodyLabel = UILabel()
     
     @IBInspectable var isStickTitleEnabled = true {
-        didSet {
-            updateLayout()
-        }
+        didSet { updateLayout() }
     }
     
     @IBInspectable var image: UIImage? {
@@ -36,9 +34,8 @@ import UIKit
         set { bodyLabel.text = newValue}
     }
     
-    @IBInspectable var allowCloseButton: Bool {
-        get { !fixedTitleView.closeButton.isHidden }
-        set { fixedTitleView.closeButton.isHidden = !newValue}
+    @IBInspectable var allowCloseButton: Bool = true {
+        didSet { updateCloseButton() }
     }
     
     var textAlignment: NSTextAlignment! {
@@ -81,11 +78,9 @@ import UIKit
         layoutMargins.right = 24
         layoutMargins.bottom = 24
         
-        fixedTitleView.layoutMargins.left = layoutMargins.left
-        fixedTitleView.layoutMargins.right = layoutMargins.right
+        fixedTitleView.preservesSuperviewLayoutMargins = true
         fixedTitleView.backgroundColor = .clear
 
-        imageView.size = .tmb44
         titleView.alignment = .top
         titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleView.titleLabel.numberOfLines = 0
@@ -97,7 +92,14 @@ import UIKit
         }
     }
     
-    private func updateLayout() {
+    private func updateCloseButton() {
+        guard allowCloseButton else {
+            // en modo card, el boton de cerrar siempre esta por fuera
+            fixedTitleView.isHidden = !isStickTitleEnabled
+            titleView.hiddeCloseButton()
+            return
+        }
+        
         titleView.hiddeCloseButton()
         if case .none = imageSize, isStickTitleEnabled {
             titleView.reserveSpaceOfCloseButton()
@@ -107,7 +109,11 @@ import UIKit
             fixedTitleView.isHidden = true
             titleView.showCloseButton()
         }
-        
+    }
+    
+    private func updateLayout() {
+        updateCloseButton()
+ 
         if isStickTitleEnabled {
             // fata verficar el caso con la distribucion en el centro
             NSLayoutConstraint.activate([
