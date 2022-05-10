@@ -86,6 +86,26 @@ internal class AndesModalTitleView: UIView {
         ])
     }
     
+    func reserveSpaceOfCloseButton() {
+        closeButton.isHidden = false
+        closeButton.alpha = 0
+    }
+    
+    func showCloseButton() {
+        closeButton.isHidden = false
+        closeButton.alpha = 1
+    }
+    
+    func hiddeCloseButton() {
+        closeButton.isHidden = true
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: super.intrinsicContentSize.width, height:  titleLabel.intrinsicContentSize.height)
+    }
+    
+    // MARK: - Animations
+    
     func showTitle(_ title: String?) {
         titleLabel.text = title
         guard !isTitleVisible else {
@@ -139,23 +159,6 @@ internal class AndesModalTitleView: UIView {
             self.layer.masksToBounds = true
         }
     }
-    
-    func reserveSpaceOfCloseButton() {
-        closeButton.isHidden = false
-        closeButton.alpha = 0
-    }
-    
-    func showCloseButton() {
-        closeButton.isHidden = false
-        closeButton.alpha = 1
-    }
-    
-    func hiddeCloseButton() {
-        closeButton.isHidden = true
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width, height:  titleLabel.intrinsicContentSize.height)
-    }
    
 }
+

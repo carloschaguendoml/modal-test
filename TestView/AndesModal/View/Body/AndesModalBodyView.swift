@@ -25,8 +25,8 @@ import UIKit
     }
     
     @IBInspectable var title: String? {
-        get { titleView.titleLabel.text }
-        set { titleView.titleLabel.text = newValue}
+        get { titleView.title }
+        set { titleView.title = newValue}
     }
     
     @IBInspectable var body: String? {
@@ -76,8 +76,7 @@ import UIKit
     private func setup() {
         clipsToBounds = true
         delegate = self
-        
-        /// Margenes por defecto podria sobreescribirse externamente
+        /// Margenes por defecto podria fijarse externamente
         layoutMargins = UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
         imageLayoutMargins = layoutMargins
         

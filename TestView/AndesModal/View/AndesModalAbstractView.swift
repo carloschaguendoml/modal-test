@@ -53,7 +53,6 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
             contentView.body = source.body
         }
 
-       // self.componentView.layoutMargins = config.layout.inset
         contentView.clipsToBounds = true
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = config.layout.cornerRadius
