@@ -35,6 +35,9 @@ import UIKit
     }
     
     private func setup() {
+        layoutMargins = .zero
+        preservesSuperviewLayoutMargins = false
+        
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -47,7 +50,7 @@ import UIKit
         addSubview(imageView)
         switch size {
         case .tmb44:
-            imageView.layer.cornerRadius = 44/2
+            imageView.layer.cornerRadius = size.height/2
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -76,25 +79,6 @@ import UIKit
         return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
        
-}
-
-extension AndesModalImageView {
-    
-    @available(*, unavailable, message: "support only to interfaz builder")
-    @IBInspectable var ibMode: Int {
-        set {
-            print("Set ib mode", newValue)
-            guard let mode = ImageSize(rawValue: newValue) else {
-                fatalError()
-            }
-            print("Set ib 2", newValue)
-            self.size = mode
-        }
-        get {
-            self.size.rawValue
-        }
-    }
-    
 }
 
 extension UIEdgeInsets {

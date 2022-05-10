@@ -204,24 +204,24 @@
 		5C7337202824482D00B571E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5C46D3A92825D904005892F7 /* AndesModalBodyView.swift */,
 				5C32DC1428257B2600693A66 /* AndesModalAbstractView.swift */,
 				5C32DC1528257B2600693A66 /* AndesModalView.swift */,
 				5C46D3A12825C79D005892F7 /* Card */,
 				5C32DC1828257B2F00693A66 /* Full */,
-				5C73372F28245EC800B571E5 /* Header */,
+				5C73372F28245EC800B571E5 /* Body */,
 				5C73372128244A6D00B571E5 /* UIViewXIB.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		5C73372F28245EC800B571E5 /* Header */ = {
+		5C73372F28245EC800B571E5 /* Body */ = {
 			isa = PBXGroup;
 			children = (
+				5C46D3A92825D904005892F7 /* AndesModalBodyView.swift */,
 				78D97A0E2823669F001EEC87 /* AndesModalImageView.swift */,
 				5C60986128295EBC00E545E7 /* AndesModalTitleView.swift */,
 			);
-			path = Header;
+			path = Body;
 			sourceTree = "<group>";
 		};
 		78D979D12823665E001EEC87 = {

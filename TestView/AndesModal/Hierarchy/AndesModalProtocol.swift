@@ -12,5 +12,4 @@ import UIKit
 internal protocol AndesModalHierarchyProtocol {
     var overlayColor: UIColor { get }
     var cornerRadius: CGFloat { get }
-    var inset: UIEdgeInsets { get }
 }

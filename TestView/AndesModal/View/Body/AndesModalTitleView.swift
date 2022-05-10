@@ -41,9 +41,9 @@ import UIKit
         stackView.preservesSuperviewLayoutMargins = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        closeButton.setTitle("X", for: .normal)
+        closeButton.setTitle(nil, for: .normal)
+        closeButton.setImage(UIImage(named: "close_24"), for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
-        closeButton.backgroundColor = tintColor.withAlphaComponent(0.2)
         closeButton.layer.masksToBounds = true
         
         titleLabel.font = UIFont.systemFont(ofSize: 24)
@@ -60,19 +60,20 @@ import UIKit
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: (24/2)),
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
 
             closeButton.widthAnchor.constraint(equalToConstant: 40),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     
     func showShadown() {
-        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        layer.shadowOpacity = 1.0
-        layer.shadowRadius = 0.2
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 16
         layer.masksToBounds = false
     }
     

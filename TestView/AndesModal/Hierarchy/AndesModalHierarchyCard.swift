@@ -12,5 +12,4 @@ import UIKit
 struct AndesModalHierarchyCard: AndesModalHierarchyProtocol {
     var overlayColor = UIColor.black.withAlphaComponent(0.8)
     var cornerRadius: CGFloat = 12.0
-    var inset = UIEdgeInsets(top: 48, left: 24, bottom: 48, right: 24)
 }

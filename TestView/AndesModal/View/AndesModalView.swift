@@ -9,9 +9,6 @@
 
 import UIKit
 
-/**
- Internal protocol that specifies the behaviour a view must provide to be a valid representation of an AndesModal
- */
 internal protocol AndesModalView: UIView {
     var delegate: AndesModalViewDelegate? { get set }
     func update(withConfig config: AndesModalViewConfig)

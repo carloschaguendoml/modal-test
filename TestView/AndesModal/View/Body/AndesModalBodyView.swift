@@ -183,22 +183,37 @@ extension UIScrollView {
 
 extension AndesModalBodyView: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if isStickTitleEnabled {
-            let posY = scrollView.contentOffset.y
-            let titleY = convert(titleView.frame, to: fixedTitleView).minY
-            if  titleY <= fixedTitleView.frame.minY  {
-                fixedTitleView.backgroundColor = .white
-                fixedTitleView.title = titleView.titleLabel.text
-                fixedTitleView.showShadown()
-            } else {
-                fixedTitleView.backgroundColor = .clear
-                fixedTitleView.title = ""
-                fixedTitleView.hiddeShadown()
-            }
+    private func fixHeaderIfNeeded() {
+        guard isStickTitleEnabled else {
+            return
         }
         
+        let posY = contentOffset.y
+        print("posY", posY +  contentInset.top)
+        if posY + contentInset.top > 0 {
+            fixedTitleView.backgroundColor = .white
+            fixedTitleView.title = nil
+            fixedTitleView.showShadown()
+        } else {
+            fixedTitleView.backgroundColor = .clear
+            fixedTitleView.hiddeShadown()
+        }
+        
+        let titleY = convert(titleView.frame, to: fixedTitleView).minY
+        if  titleY <= fixedTitleView.frame.minY  {
+            //fixedTitleView.backgroundColor = .white
+            fixedTitleView.title = title
+//
+        } else {
+            //fixedTitleView.backgroundColor = .clear
+            fixedTitleView.title = ""
+//
+        }
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        fixHeaderIfNeeded()
     }
     
 }

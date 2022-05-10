@@ -12,5 +12,4 @@ import UIKit
 struct AndesModalHierarchyFullScreen: AndesModalHierarchyProtocol {
     var overlayColor = UIColor.white
     var cornerRadius = CGFloat.zero
-    var inset = UIEdgeInsets.zero
 }
