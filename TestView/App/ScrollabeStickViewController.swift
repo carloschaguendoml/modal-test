@@ -1,8 +1,8 @@
 //
 //  ScrollabeStickViewController.swift
-//  TestView
+//  AndesUI
 //
-//  Created by Carlos Ml on 6/05/22.
+//  Created by Carlos Chaguendo on 6/05/22.
 //  Copyright © 2022 Mercado Libre. All rights reserved.
 //
 

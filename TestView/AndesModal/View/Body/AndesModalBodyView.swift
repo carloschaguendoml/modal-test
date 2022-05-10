@@ -1,8 +1,8 @@
 //
 //  ScrollableStick.swift
-//  TestView
+//  AndesUI
 //
-//  Created by Carlos Ml on 6/05/22.
+//  Created by Carlos Chaguendo on 6/05/22.
 //  Copyright © 2022 Mercado Libre. All rights reserved.
 //
 
@@ -210,9 +210,10 @@ extension AndesModalBodyView: UIScrollViewDelegate {
         
         let titleY = convert(titleView.frame, to: fixedTitleView).minY
         if titleY <= fixedTitleView.frame.minY  {
-            fixedTitleView.title = title
+            fixedTitleView.showTitle(title)
+       
         } else {
-            fixedTitleView.title = ""
+            fixedTitleView.hiddeTitle()
 
         }
     }

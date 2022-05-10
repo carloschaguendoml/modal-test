@@ -1,8 +1,8 @@
 //
 //  UIViewXIB.swift
-//  TestView
+//  AndesUI
 //
-//  Created by Carlos Ml on 5/05/22.
+//  Created by Carlos Chaguendo on 5/05/22.
 //
 
 import UIKit

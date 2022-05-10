@@ -67,6 +67,7 @@ import UIKit
                 imageView.topAnchor.constraint(equalTo: topAnchor),
                 imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
+            
         default:
             NSLayoutConstraint.activate([
                 imageView.heightAnchor.constraint(equalToConstant: size.height),

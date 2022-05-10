@@ -2,7 +2,7 @@
 //  AndesModalStickTitleView.swift
 //  AndesUI
 //
-//  Created by Carlos Ml on 9/05/22.
+//  Created by Carlos Chaguendo on 9/05/22.
 //  Copyright © 2022 Mercado Libre. All rights reserved.
 //
 
@@ -11,9 +11,12 @@ import UIKit
 @IBDesignable
 internal class AndesModalTitleView: UIView {
     
-    let kCloseButtonSize: CGFloat = 40
     let kHeight: CGFloat = 64
-    let kCloseIconSize: CGFloat = 24
+    let kIconSize: CGFloat = 24
+    let kButtonSize: CGFloat = 40
+    
+    private(set) var isShadowVisible = false
+    private(set) var isTitleVisible = false
     
     private let stackView = UIStackView()
     let titleLabel = UILabel()
@@ -29,7 +32,9 @@ internal class AndesModalTitleView: UIView {
         set { stackView.alignment = newValue }
     }
     
-    var closeButtonFirstBaseLine: CGFloat { (kHeight - kCloseButtonSize)/2 + (kCloseButtonSize - kCloseIconSize)/2 }
+    var closeButtonFirstBaseLine: CGFloat {
+        return (kHeight - kButtonSize)/2 + (kButtonSize - kIconSize)/2
+    }
     
     init() {
         super.init(frame: .zero)
@@ -48,17 +53,18 @@ internal class AndesModalTitleView: UIView {
         stackView.preservesSuperviewLayoutMargins = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        // closeButton.backgroundColor = .red
         closeButton.setTitle(nil, for: .normal)
         closeButton.setImage(UIImage(named: "close_24"), for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
-        closeButton.layer.masksToBounds = true
-        
-        /// Deberia alinearse por fuera de los margenes
-        /// no se puede realizar por medio de constrains porque se salen fuera de los margenes
-        closeButton.transform = .init(translationX: kCloseIconSize/2, y: 0)
+        /// tiene que alinearse por fuera de los margenes
+        /// no se puede realizar por medio de constrains porque puede romper  el layout
+        closeButton.transform = .init(translationX: kIconSize/2, y: 0)
         
         titleLabel.font = UIFont.systemFont(ofSize: 24)
+        
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 16
         
         layoutMargins = .zero
         preservesSuperviewLayoutMargins = false
@@ -70,32 +76,68 @@ internal class AndesModalTitleView: UIView {
             stackView.addArrangedSubview($0)
         }
         
-        closeButton.layoutMargins.right = (24/2)
-        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-
-            closeButton.widthAnchor.constraint(equalToConstant: kCloseButtonSize),
-            closeButton.heightAnchor.constraint(equalToConstant: kCloseButtonSize),
-            //closeButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: 12)
+            closeButton.widthAnchor.constraint(equalToConstant: kButtonSize),
+            closeButton.heightAnchor.constraint(equalToConstant: kButtonSize),
         ])
     }
     
+    func showTitle(_ title: String?) {
+        titleLabel.text = title
+        guard !isTitleVisible else {
+            return
+        }
+    
+        titleLabel.layer.opacity = 0
+        UIView.animate(withDuration: 0.1) {
+            self.titleLabel.layer.opacity = 1
+        }
+        isTitleVisible = true
+    }
+    
+    func hiddeTitle() {
+        guard isTitleVisible else {
+            return
+        }
+    
+        titleLabel.layer.opacity = 1
+        UIView.animate(withDuration: 0.1) {
+            self.titleLabel.layer.opacity = 0
+            
+        } completion: { _ in
+            self.titleLabel.text = ""
+        }
+        isTitleVisible = false
+    }
+    
     func showShadown() {
-        backgroundColor = .white
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 6)
-        layer.shadowOpacity = 0.1
-        layer.shadowRadius = 16
+        if isShadowVisible {
+            return
+        }
+        isShadowVisible = true
+        backgroundColor = .clear
         layer.masksToBounds = false
+        UIView.animate(withDuration: 0.1) {
+            self.backgroundColor = .white
+            self.layer.shadowColor = UIColor.black.cgColor
+        }
     }
     
     func hiddeShadown() {
-        backgroundColor = .clear
-        layer.masksToBounds = true
+        if !isShadowVisible {
+            return
+        }
+        isShadowVisible = false
+        UIView.animate(withDuration: 0.1) {
+            self.backgroundColor = .clear
+            self.layer.shadowColor = UIColor.clear.cgColor
+        } completion: { _ in
+            self.layer.masksToBounds = true
+        }
     }
     
     func reserveSpaceOfCloseButton() {
