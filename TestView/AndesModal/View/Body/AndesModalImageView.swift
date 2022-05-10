@@ -45,6 +45,7 @@ import UIKit
     }
     
     private func updateView() {
+        imageView.layer.cornerRadius = 0
         imageView.removeFromSuperview()
         imageView.constraints.forEach(imageView.removeConstraint(_:))
         addSubview(imageView)
@@ -53,20 +54,26 @@ import UIKit
             imageView.layer.cornerRadius = size.height/2
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+                imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
                 imageView.widthAnchor.constraint(equalToConstant: size.height),
                 imageView.heightAnchor.constraint(equalToConstant: size.height)
             ])
             
-        default:
-            imageView.layer.cornerRadius = 0
-            let margins = size.margins
+        case .image:
             NSLayoutConstraint.activate([
                 imageView.heightAnchor.constraint(equalToConstant: size.height),
-                imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margins.right),
-                imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margins.left),
-                imageView.topAnchor.constraint(equalTo: topAnchor, constant: margins.top),
-                imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margins.bottom)
+                imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                imageView.topAnchor.constraint(equalTo: topAnchor),
+                imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        default:
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: size.height),
+                imageView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+                imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+                imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+                imageView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
             ])
         }
     }
@@ -75,7 +82,7 @@ import UIKit
         if isHidden {
             return .zero
         }
-        let height = size.margins.vertical + size.height
+        let height = layoutMargins.vertical + size.height
         return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
        

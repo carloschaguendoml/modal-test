@@ -52,6 +52,11 @@ import UIKit
         set { imageView.size = newValue}
     }
     
+    var imageLayoutMargins: UIEdgeInsets {
+        get { imageView.layoutMargins }
+        set { imageView.layoutMargins = newValue}
+    }
+    
     private var contentHeight: CGFloat = 0.0
     
     deinit {
@@ -72,11 +77,9 @@ import UIKit
         clipsToBounds = true
         delegate = self
         
-        // La ilustracion(full) tiene que llegar hasta el borde
-        layoutMargins.top = 0
-        layoutMargins.left = 24
-        layoutMargins.right = 24
-        layoutMargins.bottom = 24
+        /// Margenes por defecto podria sobreescribirse externamente
+        layoutMargins = UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
+        imageLayoutMargins = layoutMargins
         
         fixedTitleView.preservesSuperviewLayoutMargins = true
         fixedTitleView.backgroundColor = .clear
@@ -161,6 +164,10 @@ import UIKit
                 contentInset.top = (bounds.size.height - contentHeight)/2
             }
         }
+        
+        // La ilustracion(full) tiene que llegar hasta el borde
+        // sobre escribe culaquier valor que fijen externamente
+        layoutMargins.top = 0
     }
 
     /// El contenido tratara de usar el maximo espacio posible antes de comenzar a usar el scroll

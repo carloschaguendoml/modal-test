@@ -24,7 +24,6 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="image" keyPath="image" value="PNN"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Modal title"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

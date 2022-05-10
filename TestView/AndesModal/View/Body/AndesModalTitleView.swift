@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable internal class AndesModalTitleView: UIView {
+@IBDesignable
+internal class AndesModalTitleView: UIView {
     
     let kCloseButtonSize: CGFloat = 40
     let kHeight: CGFloat = 64
@@ -43,15 +44,19 @@ import UIKit
     private func setup() {
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.spacing = 8
+        stackView.spacing = -8
         stackView.preservesSuperviewLayoutMargins = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-//        closeButton.backgroundColor = .red
+        // closeButton.backgroundColor = .red
         closeButton.setTitle(nil, for: .normal)
         closeButton.setImage(UIImage(named: "close_24"), for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
         closeButton.layer.masksToBounds = true
+        
+        /// Deberia alinearse por fuera de los margenes
+        /// no se puede realizar por medio de constrains porque se salen fuera de los margenes
+        closeButton.transform = .init(translationX: kCloseIconSize/2, y: 0)
         
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         

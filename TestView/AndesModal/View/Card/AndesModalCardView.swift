@@ -7,7 +7,7 @@
 //
 //
 
-import Foundation
+import UIKit
 
 class AndesModalCardView: AndesModalAbstractView {
     
@@ -21,6 +21,8 @@ class AndesModalCardView: AndesModalAbstractView {
         contentView.layoutMargins.left = 22
         contentView.layoutMargins.right = 22
         contentView.layoutMargins.bottom = 20
+        
+        contentView.imageLayoutMargins = UIEdgeInsets(top: 0, left: 44, bottom: 0, right: 44)
     }
 
 }
