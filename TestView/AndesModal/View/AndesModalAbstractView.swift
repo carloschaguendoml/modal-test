@@ -47,6 +47,7 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
         contentView.distribution = config.verticalAlignmet
         contentView.textAlignment = config.textAlignmet
         contentView.isStickTitleEnabled = config.stickHeader
+        contentView.isStickFooterEnabled = config.stickFooter
         
         if let source = config.source.first {
             contentView.title = source.title

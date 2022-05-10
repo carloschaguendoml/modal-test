@@ -27,6 +27,7 @@ class AndesModalCardView: AndesModalAbstractView {
         contentView.layoutMargins.bottom = 20
         
         contentView.imageLayoutMargins = UIEdgeInsets(top: 0, left: 44, bottom: 0, right: 44)
+        contentView.updateLayout()
     }
 
 }

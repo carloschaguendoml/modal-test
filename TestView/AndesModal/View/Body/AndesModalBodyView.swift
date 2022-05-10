@@ -8,16 +8,16 @@
 
 import UIKit
 
-@IBDesignable internal class AndesModalBodyView: UIScrollView {
+@IBDesignable
+internal class AndesModalBodyView: UIScrollView {
     
     private(set) var fixedTitleView = AndesModalTitleView()
     private(set) var imageView = AndesModalImageView()
     private(set) var titleView = AndesModalTitleView()
     private(set) var bodyLabel = UILabel()
     
-    @IBInspectable var isStickTitleEnabled = true {
-        didSet { updateLayout() }
-    }
+    @IBInspectable var isStickTitleEnabled = true
+    @IBInspectable var isStickFooterEnabled = true
     
     @IBInspectable var image: UIImage? {
         get { imageView.image }
@@ -34,9 +34,7 @@ import UIKit
         set { bodyLabel.text = newValue}
     }
     
-    @IBInspectable var allowCloseButton: Bool = true {
-        didSet { updateCloseButton() }
-    }
+    @IBInspectable var allowCloseButton: Bool = true
     
     var textAlignment: NSTextAlignment! {
         didSet {
@@ -57,10 +55,21 @@ import UIKit
         set { imageView.layoutMargins = newValue}
     }
     
+    internal var footerView: UIView? {
+        willSet {
+            if newValue == nil {
+                removeFooterView()
+            }
+        }
+        didSet {
+            setupFooterView()
+        }
+    }
+    
     private var contentHeight: CGFloat = 0.0
     
     deinit {
-        print("Eliminado")
+        print("Eliminado body")
     }
     
     init() {
@@ -94,7 +103,53 @@ import UIKit
         }
     }
     
-    private func updateCloseButton() {
+    private func removeFooterView() {
+        print("Eliminando footer")
+        footerView?.removeFromSuperview()
+        updateLayout()
+    }
+    
+    private func setupFooterView() {
+        guard let footerView = footerView else {
+            print("Agregando footer 2")
+            return
+        }
+        print("Agregando footer")
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(footerView)
+        updateLayout()
+    }
+    
+    func updateLayout() {
+        [imageView, bodyLabel, titleView, fixedTitleView, footerView].compactMap { $0 }.forEach { view in
+            view.removeFromSuperview()
+            self.addSubview(view)
+        }
+        
+        setupCloseButton()
+        setupHeaderConstratints()
+        
+        let titleTopMargin = imageSize == .none ? fixedTitleView.closeButtonFirstBaseLine : 26
+        
+        NSLayoutConstraint.activate([
+            fixedTitleView.heightAnchor.constraint(equalToConstant: fixedTitleView.kHeight),
+            fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: titleTopMargin),
+
+            bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
+            bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 24),
+        ])
+        
+        setupFooterConstraints()
+    }
+    
+    private func setupCloseButton() {
         guard allowCloseButton else {
             // en modo card, el boton de cerrar siempre esta por fuera
             fixedTitleView.isHidden = !isStickTitleEnabled
@@ -114,9 +169,7 @@ import UIKit
         }
     }
     
-    private func updateLayout() {
-        updateCloseButton()
- 
+    private func setupHeaderConstratints() {
         if isStickTitleEnabled {
             // fata verficar el caso con la distribucion en el centro
             NSLayoutConstraint.activate([
@@ -130,24 +183,35 @@ import UIKit
                 imageView.topAnchor.constraint(equalTo: fixedTitleView.bottomAnchor)
             ])
         }
+    }
+    
+    private func setupFooterConstraints() {
+        guard let footer = footerView else {
+            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            return
+        }
         
-        let titleTopMargin = imageSize == .none ? fixedTitleView.closeButtonFirstBaseLine : 26
-        
+        let height = footer.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        footer.bringSubviewToFront(bodyLabel)
         NSLayoutConstraint.activate([
-            fixedTitleView.heightAnchor.constraint(equalToConstant: fixedTitleView.kHeight),
-            fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
-            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-
-            titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            titleView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: titleTopMargin),
-
-            bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 24),
-            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            bodyLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
+            footer.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            footer.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
         ])
+        
+        if isStickFooterEnabled {
+            contentInset.bottom = height
+            NSLayoutConstraint.activate([
+                bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+                footer.bottomAnchor.constraint(equalTo: bottomFixedAnchor),
+                footer.heightAnchor.constraint(equalToConstant: height),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                footer.bottomAnchor.constraint(equalTo: bottomAnchor),
+                footer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor),
+            ])
+        }
     }
     
     override public func layoutSubviews() {
@@ -189,6 +253,17 @@ extension UIScrollView {
         }
     }
     
+    fileprivate var bottomFixedAnchor: NSLayoutYAxisAnchor {
+       if #available(iOS 11.0, *) {
+           return frameLayoutGuide.bottomAnchor
+       } else {
+           guard let superview = superview else {
+               preconditionFailure()
+           }
+           return superview.bottomAnchor
+       }
+   }
+    
 }
 
 extension AndesModalBodyView: UIScrollViewDelegate {
@@ -208,12 +283,10 @@ extension AndesModalBodyView: UIScrollViewDelegate {
         }
         
         let titleY = convert(titleView.frame, to: fixedTitleView).minY
-        if titleY <= fixedTitleView.frame.minY  {
+        if titleY < fixedTitleView.frame.minY  {
             fixedTitleView.showTitle(title)
-       
         } else {
             fixedTitleView.hiddeTitle()
-
         }
     }
     

@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     var modal: AndesModal?
     @IBOutlet weak var fixHeader: UISwitch!
+    @IBOutlet weak var fixFooter: UISwitch!
     @IBOutlet weak var allowsDismissButton: UISwitch!
     
     
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
             type: ty,
             imageSize: size,
             stickHeader: fixHeader.isOn,
-            stickFooter: false,
+            stickFooter: fixFooter.isOn,
             allowsDismissButton: allowsDismissButton.isOn,
             vertical: vAlignmet,
             textAlignmet: textAling,

@@ -10,47 +10,24 @@
 import UIKit
 
 @objc public class AndesModal: NSObject {
+    
     internal var contentView:  AndesModalView!
     
-    @objc public var hierarchy: AndesModalHierarchy = .card {
-        didSet {
-            updateContentView()
-        }
-    }
+    @objc public var hierarchy: AndesModalHierarchy = .card
+
+    @objc public var stickHeader: Bool
     
-    @objc public var stickHeader: Bool {
-        didSet {
-            updateContentView()
-        }
-    }
+    @objc public var stickFooter: Bool
     
-    @objc public var stickFooter: Bool {
-        didSet {
-            updateContentView()
-        }
-    }
+    @objc public var allowsDismissButton = true
     
-    internal var imageSize: AndesModalImageView.ImageSize {
-        didSet {
-            updateContentView()
-        }
-    }
+    internal var imageSize: AndesModalImageView.ImageSize
     
-    internal var textAlignmet: NSTextAlignment {
-        didSet {
-            updateContentView()
-        }
-    }
+    internal var textAlignmet: NSTextAlignment
     
-    var allowsDismissButton = true
+    internal var verticalAlignmet: AndesModalVerticalAlignment
     
-    internal var verticalAlignmet: AndesModalVerticalAlignment  {
-        didSet {
-            updateContentView()
-        }
-    }
-    
-    var pages: [AndesModalPage] = []
+    internal var pages: [AndesModalPage] = []
     
     var accessibilityManager: AndesModalAccessibilityManager?
     
@@ -58,10 +35,6 @@ import UIKit
         return accessibilityManager?.accessibilityActivated() != nil
     }
 
-    @available(*, unavailable, message: "not suppoted with Interfaz builder")
-    required init?(coder: NSCoder) {
-        preconditionFailure()
-    }
 
     public convenience init(type: AndesModalHierarchy, pages: AndesModalPage...) {
         self.init(type: type, pages: pages)
@@ -84,7 +57,6 @@ import UIKit
         self.pages = pages
         super.init()
         self.hierarchy = type
-        setup()
     }
 
     private func setup() {
@@ -117,7 +89,7 @@ import UIKit
     /// show the modal in the view
     /// - Parameters:
     @objc public func show(in vc: UIViewController) {
-        
+        setup()
         vc.parent?.view.addSubview(contentView)
         contentView.autoPinEdgesToSuperviewEdges()
     }
