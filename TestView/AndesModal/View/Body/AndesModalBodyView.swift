@@ -173,7 +173,7 @@ import UIKit
 
     /// El contenido tratara de usar el maximo espacio posible antes de comenzar a usar el scroll
     override public var intrinsicContentSize: CGSize {
-        return CGSize(width: contentSize.width, height: contentHeight)
+        return CGSize(width: contentSize.width, height: contentHeight + contentInset.vertical)
     }
 }
 
