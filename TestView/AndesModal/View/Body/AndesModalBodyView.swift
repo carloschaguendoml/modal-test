@@ -99,6 +99,7 @@ import UIKit
         guard allowCloseButton else {
             // en modo card, el boton de cerrar siempre esta por fuera
             fixedTitleView.isHidden = !isStickTitleEnabled
+            fixedTitleView.hiddeCloseButton()
             titleView.hiddeCloseButton()
             return
         }
@@ -201,25 +202,19 @@ extension AndesModalBodyView: UIScrollViewDelegate {
         let posY = contentOffset.y
         print("posY", posY +  contentInset.top)
         if posY + contentInset.top > 1 {
-            fixedTitleView.backgroundColor = .white
-            fixedTitleView.title = nil
+            fixedTitleView.title = ""
             fixedTitleView.showShadown()
         } else {
-            fixedTitleView.backgroundColor = .clear
             fixedTitleView.hiddeShadown()
         }
         
         let titleY = convert(titleView.frame, to: fixedTitleView).minY
-        if  titleY <= fixedTitleView.frame.minY  {
-            //fixedTitleView.backgroundColor = .white
+        if titleY <= fixedTitleView.frame.minY  {
             fixedTitleView.title = title
-//
         } else {
-            //fixedTitleView.backgroundColor = .clear
             fixedTitleView.title = ""
-//
+
         }
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

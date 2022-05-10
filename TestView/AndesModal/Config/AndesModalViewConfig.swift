@@ -20,7 +20,9 @@ internal struct AndesModalViewConfig {
     var textAlignmet = NSTextAlignment.left
     var verticalAlignmet = AndesModalVerticalAlignment.center
     
-    var content: [AndesModalPage] = []
+    var source: [AndesModalPage] = []
+    
+    var allowsDismissButton = true
     
     init() {
         layout = AndesModalHierarchyCard()

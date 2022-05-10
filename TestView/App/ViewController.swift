@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     
     var modal: AndesModal?
     @IBOutlet weak var fixHeader: UISwitch!
+    @IBOutlet weak var allowsDismissButton: UISwitch!
+    
     
    
     let largeText = """
@@ -83,6 +85,7 @@ class ViewController: UIViewController {
             imageSize: size,
             stickHeader: fixHeader.isOn,
             stickFooter: false,
+            allowsDismissButton: allowsDismissButton.isOn,
             vertical: vAlignmet,
             textAlignmet: textAling,
             pages: [AndesModalPage(title: title, body: text)]

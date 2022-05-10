@@ -42,6 +42,8 @@ import UIKit
         }
     }
     
+    var allowsDismissButton = true
+    
     internal var verticalAlignmet: AndesModalVerticalAlignment  {
         didSet {
             updateContentView()
@@ -66,17 +68,19 @@ import UIKit
     }
     
     internal init(type: AndesModalHierarchy,
-                      imageSize: AndesModalImageView.ImageSize = .ilustration160,
-                      stickHeader: Bool = true,
-                      stickFooter: Bool = true,
-                      vertical: AndesModalVerticalAlignment = .fill,
-                      textAlignmet: NSTextAlignment = .left,
-                      pages: [AndesModalPage]) {
+                  imageSize: AndesModalImageView.ImageSize = .ilustration160,
+                  stickHeader: Bool = true,
+                  stickFooter: Bool = true,
+                  allowsDismissButton: Bool = true,
+                  vertical: AndesModalVerticalAlignment = .fill,
+                  textAlignmet: NSTextAlignment = .left,
+                  pages: [AndesModalPage]) {
         self.stickFooter = stickFooter
         self.stickHeader = stickHeader
         self.imageSize = imageSize
         self.verticalAlignmet = vertical
         self.textAlignmet = textAlignmet
+        self.allowsDismissButton = allowsDismissButton
         self.pages = pages
         super.init()
         self.hierarchy = type

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ppt-pY-wau">
-                                <rect key="frame" x="20" y="88" width="374" height="523"/>
+                                <rect key="frame" x="20" y="88" width="374" height="600"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hJu-HR-807">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>
@@ -150,10 +150,26 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="941-3a-lqr">
+                                        <rect key="frame" x="0.0" y="539" width="374" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dissmisable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-m7-PrW">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="utX-fa-dqS">
+                                                <rect key="frame" x="0.0" y="30" width="376" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="QDr-p9-olQ" firstAttribute="leading" secondItem="ppt-pY-wau" secondAttribute="leading" id="I73-XJ-Nf2"/>
+                                    <constraint firstItem="941-3a-lqr" firstAttribute="leading" secondItem="ppt-pY-wau" secondAttribute="leading" id="NU7-De-AUa"/>
                                     <constraint firstAttribute="trailing" secondItem="QDr-p9-olQ" secondAttribute="trailing" id="Vmh-9j-uiH"/>
+                                    <constraint firstAttribute="trailing" secondItem="941-3a-lqr" secondAttribute="trailing" id="sVA-ZU-Iop"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DCb-6L-W0i">
@@ -190,6 +206,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Modal" largeTitleDisplayMode="always" id="60G-ef-A6O"/>
                     <connections>
+                        <outlet property="allowsDismissButton" destination="utX-fa-dqS" id="fhK-Zu-ifq"/>
                         <outlet property="displayMode" destination="M1Z-6Y-lU2" id="9h8-ZQ-YUS"/>
                         <outlet property="fixHeader" destination="IoT-6h-5Us" id="xsT-hb-ptH"/>
                         <outlet property="ilustrationStyle" destination="kYW-rC-20D" id="Ezn-89-A2G"/>

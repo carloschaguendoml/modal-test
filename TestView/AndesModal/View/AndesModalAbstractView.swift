@@ -42,12 +42,13 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
     /// Override this method on each Badge View to setup its unique components
     func updateView() {
         self.backgroundColor = config.layout.overlayColor
+        contentView.allowCloseButton = config.allowsDismissButton
         contentView.imageSize = config.imageSize
         contentView.distribution = config.verticalAlignmet
         contentView.textAlignment = config.textAlignmet
         contentView.isStickTitleEnabled = config.stickHeader
         
-        if let source = config.content.first {
+        if let source = config.source.first {
             contentView.title = source.title
             contentView.body = source.body
         }
@@ -65,5 +66,3 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
         delegate?.andesModalViewDidDissmis(self)
     }
 }
-
-

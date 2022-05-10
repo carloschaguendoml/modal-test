@@ -11,11 +11,15 @@ import UIKit
 
 class AndesModalCardView: AndesModalAbstractView {
     
+    @IBOutlet weak var dismissButton: UIButton!
+    
     override func updateView() {
+        super.updateView()
+        
         // Los card tiene el boton de cerrar por fuera del body
         contentView.allowCloseButton = false
         
-        super.updateView()
+        dismissButton.isHidden = !config.allowsDismissButton
 
         contentView.layoutMargins.top = 0
         contentView.layoutMargins.left = 22

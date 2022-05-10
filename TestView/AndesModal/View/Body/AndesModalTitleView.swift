@@ -85,6 +85,7 @@ internal class AndesModalTitleView: UIView {
     }
     
     func showShadown() {
+        backgroundColor = .white
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 6)
         layer.shadowOpacity = 0.1
@@ -93,6 +94,7 @@ internal class AndesModalTitleView: UIView {
     }
     
     func hiddeShadown() {
+        backgroundColor = .clear
         layer.masksToBounds = true
     }
     
