@@ -128,13 +128,16 @@ import UIKit
             ])
         }
         
+        let titleTopMargin = imageSize == .none ? fixedTitleView.closeButtonFirstBaseLine : 26
+        
         NSLayoutConstraint.activate([
+            fixedTitleView.heightAnchor.constraint(equalToConstant: fixedTitleView.kHeight),
             fixedTitleView.widthAnchor.constraint(equalTo: widthAnchor),
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
 
             titleView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             titleView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 26),
+            titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: titleTopMargin),
 
             bodyLabel.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 24),
             bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -190,7 +193,7 @@ extension AndesModalBodyView: UIScrollViewDelegate {
         
         let posY = contentOffset.y
         print("posY", posY +  contentInset.top)
-        if posY + contentInset.top > 0 {
+        if posY + contentInset.top > 1 {
             fixedTitleView.backgroundColor = .white
             fixedTitleView.title = nil
             fixedTitleView.showShadown()

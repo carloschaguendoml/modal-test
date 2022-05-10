@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ppt-pY-wau">
-                                <rect key="frame" x="20" y="88" width="374" height="446"/>
+                                <rect key="frame" x="20" y="88" width="374" height="523"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hJu-HR-807">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>
@@ -98,8 +98,27 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6bV-Ol-fPA">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-0J-N6X">
                                         <rect key="frame" x="0.0" y="308" width="206" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqC-XQ-s3M">
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sh1-Ht-qJD">
+                                                <rect key="frame" x="0.0" y="30" width="206" height="32"/>
+                                                <segments>
+                                                    <segment title="Small"/>
+                                                    <segment title="Medium"/>
+                                                    <segment title="Large"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6bV-Ol-fPA">
+                                        <rect key="frame" x="0.0" y="385" width="206" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVA-pH-nMa">
                                                 <rect key="frame" x="0.0" y="0.0" width="206" height="18"/>
@@ -118,7 +137,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QDr-p9-olQ">
-                                        <rect key="frame" x="0.0" y="385" width="374" height="61"/>
+                                        <rect key="frame" x="0.0" y="462" width="374" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixed Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dp-7C-vAy">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -176,12 +195,28 @@
                         <outlet property="ilustrationStyle" destination="kYW-rC-20D" id="Ezn-89-A2G"/>
                         <outlet property="textAlignment" destination="DJt-lw-Z7T" id="na7-aQ-eku"/>
                         <outlet property="textContent" destination="ZPe-vY-qme" id="frO-7Z-fnH"/>
+                        <outlet property="titleContent" destination="sh1-Ht-qJD" id="Yt1-gg-nUM"/>
                         <outlet property="verticalAlignmetControl" destination="lsf-oT-9rr" id="7Ki-Fm-2hX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="81.696428571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4Bx-pg-XDI">
+            <objects>
+                <viewController id="XtC-fV-IWW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JCA-Nw-V6W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cbd-Ik-EaS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P8Z-cK-BOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869" y="148"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Xl-4d-XD4">

@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textAlignment: UISegmentedControl!
     @IBOutlet weak var displayMode: UISegmentedControl!
     @IBOutlet weak var textContent: UISegmentedControl!
+    @IBOutlet weak var titleContent: UISegmentedControl!
     
     var modal: AndesModal?
     @IBOutlet weak var fixHeader: UISwitch!
@@ -70,6 +71,13 @@ class ViewController: UIViewController {
         default: text = largeText
         }
         
+        let title: String
+        switch titleContent.selectedSegmentIndex {
+        case 0: title = "Modal"
+        case 1: title = "This is a multiline  modal title "
+        default: title = "This is a multiline modal title and it is used as an exmaple of a long text for example."
+        }
+        
         modal = AndesModal(
             type: ty,
             imageSize: size,
@@ -77,7 +85,7 @@ class ViewController: UIViewController {
             stickFooter: false,
             vertical: vAlignmet,
             textAlignmet: textAling,
-            pages: [AndesModalPage(title: "This is a multiline modal title and it is used as an exmaple of a long text.", body: text)]
+            pages: [AndesModalPage(title: title, body: text)]
         )
         modal?.show(in: self)
     }

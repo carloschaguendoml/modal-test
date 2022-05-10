@@ -10,6 +10,10 @@ import UIKit
 
 @IBDesignable internal class AndesModalTitleView: UIView {
     
+    let kCloseButtonSize: CGFloat = 40
+    let kHeight: CGFloat = 64
+    let kCloseIconSize: CGFloat = 24
+    
     private let stackView = UIStackView()
     let titleLabel = UILabel()
     let closeButton = UIButton()
@@ -23,6 +27,8 @@ import UIKit
         get { stackView.alignment }
         set { stackView.alignment = newValue }
     }
+    
+    var closeButtonFirstBaseLine: CGFloat { (kHeight - kCloseButtonSize)/2 + (kCloseButtonSize - kCloseIconSize)/2 }
     
     init() {
         super.init(frame: .zero)
@@ -41,6 +47,7 @@ import UIKit
         stackView.preservesSuperviewLayoutMargins = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+//        closeButton.backgroundColor = .red
         closeButton.setTitle(nil, for: .normal)
         closeButton.setImage(UIImage(named: "close_24"), for: .normal)
         closeButton.setTitleColor(.black, for: .normal)
@@ -58,14 +65,17 @@ import UIKit
             stackView.addArrangedSubview($0)
         }
         
+        closeButton.layoutMargins.right = (24/2)
+        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: (24/2)),
+            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
 
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
+            closeButton.widthAnchor.constraint(equalToConstant: kCloseButtonSize),
+            closeButton.heightAnchor.constraint(equalToConstant: kCloseButtonSize),
+            //closeButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: 12)
         ])
     }
     
@@ -96,7 +106,7 @@ import UIKit
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: super.intrinsicContentSize.width, height:  isHidden ? 0 : 64)
+        return CGSize(width: super.intrinsicContentSize.width, height:  titleLabel.intrinsicContentSize.height)
     }
    
 }
