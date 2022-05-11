@@ -11,10 +11,11 @@ import UIKit
 @IBDesignable
 internal class AndesModalBodyView: UIScrollView {
     
-    private(set) var fixedTitleView = AndesModalTitleView()
-    private(set) var imageView = AndesModalImageView()
-    private(set) var titleView = AndesModalTitleView()
-    private(set) var bodyLabel = UILabel()
+    let fixedTitleView = AndesModalTitleView()
+    let imageView = AndesModalImageView()
+    let titleView = AndesModalTitleView()
+    let bodyLabel = UILabel()
+    let footerContainer = UIView()
     
     @IBInspectable var isStickTitleEnabled = true
     @IBInspectable var isStickFooterEnabled = true
@@ -53,6 +54,11 @@ internal class AndesModalBodyView: UIScrollView {
     var imageLayoutMargins: UIEdgeInsets {
         get { imageView.layoutMargins }
         set { imageView.layoutMargins = newValue}
+    }
+    
+    var footerLayoutMargins: UIEdgeInsets {
+        get { footerContainer.layoutMargins }
+        set { footerContainer.layoutMargins = newValue}
     }
     
     internal var footerView: UIView? {
@@ -96,6 +102,8 @@ internal class AndesModalBodyView: UIScrollView {
         titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleView.titleLabel.numberOfLines = 0
         bodyLabel.numberOfLines = 0
+        
+        footerContainer.backgroundColor = .white
      
         [imageView, bodyLabel, titleView, fixedTitleView].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -111,17 +119,15 @@ internal class AndesModalBodyView: UIScrollView {
     
     private func setupFooterView() {
         guard let footerView = footerView else {
-            print("Agregando footer 2")
             return
         }
-        print("Agregando footer")
         footerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(footerView)
         updateLayout()
     }
     
     func updateLayout() {
-        [imageView, bodyLabel, titleView, fixedTitleView, footerView].compactMap { $0 }.forEach { view in
+        [imageView, bodyLabel, titleView, fixedTitleView, footerContainer].compactMap { $0 }.forEach { view in
             view.removeFromSuperview()
             self.addSubview(view)
         }
@@ -191,25 +197,36 @@ internal class AndesModalBodyView: UIScrollView {
             return
         }
         
+       
+        footerContainer.translatesAutoresizingMaskIntoConstraints = false
+        footerContainer.addSubview(footer)
+        
+    
         let height = footer.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        footer.bringSubviewToFront(bodyLabel)
+        footerContainer.bringSubviewToFront(bodyLabel)
+        
         NSLayoutConstraint.activate([
-            footer.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            footer.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            footer.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
+            footer.leadingAnchor.constraint(equalTo: footerContainer.layoutMarginsGuide.leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: footerContainer.layoutMarginsGuide.trailingAnchor),
+            footer.topAnchor.constraint(equalTo: footerContainer.layoutMarginsGuide.topAnchor),
+            footer.bottomAnchor.constraint(equalTo: footerContainer.layoutMarginsGuide.bottomAnchor),
+
+            footerContainer.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            footerContainer.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            footerContainer.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
         ])
         
         if isStickFooterEnabled {
             contentInset.bottom = height + layoutMargins.bottom
             NSLayoutConstraint.activate([
                 bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-                footer.bottomAnchor.constraint(equalTo: bottomFixedAnchor),
-                footer.heightAnchor.constraint(equalToConstant: height),
+                footerContainer.bottomAnchor.constraint(equalTo: bottomFixedAnchor),
+                //footerContainer.heightAnchor.constraint(equalToConstant: height),
             ])
         } else {
             NSLayoutConstraint.activate([
-                footer.bottomAnchor.constraint(equalTo: bottomAnchor),
-                footer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: layoutMargins.bottom),
+                footerContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
+                footerContainer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: layoutMargins.bottom),
             ])
         }
     }
