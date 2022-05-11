@@ -9,9 +9,9 @@ import UIKit
 
 @IBDesignable
 internal class AndesModalBodyView: UIScrollView {
-    private let fixedTitleView = AndesModalTitleView()
+    public let fixedTitleView = AndesModalTitleView()
     private let imageView = AndesModalImageView()
-    private let titleView = AndesModalTitleView()
+    public let titleView = AndesModalTitleView()
     private let bodyLabel = UILabel()
     private let footerContainer = UIView()
 

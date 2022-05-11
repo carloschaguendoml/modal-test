@@ -16,8 +16,8 @@ class AndesModalFullView: AndesModalAbstractView {
         super.updateView()
 
         contentView.layoutMargins = UIEdgeInsets(top: 0, left: 22, bottom: 20, right: 22)
-        contentView.imageLayoutMargins = UIEdgeInsets(top: 0, left: 22, bottom: 0, right: 22)
-        contentView.footerLayoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 20)
+        contentView.imageLayoutMargins = UIEdgeInsets(top: 0, left: 22, bottom: 10, right: 22)
+        contentView.footerLayoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 20)
         
         
         /// para la variante carrusel  hay que agregar el footer a esta ventana y aggregar un inset bottom
