@@ -60,7 +60,7 @@ internal class AndesModalTitleView: UIView {
         /// no se puede realizar por medio de constrains porque puede romper  el layout
         closeButton.transform = .init(translationX: kIconSize/2, y: 0)
         
-        titleLabel.font = UIFont.systemFont(ofSize: 24)
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         
         layer.shadowOffset = CGSize(width: 0, height: 6)
         layer.shadowOpacity = 0.1

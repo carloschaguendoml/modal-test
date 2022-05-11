@@ -99,9 +99,9 @@ internal class AndesModalBodyView: UIScrollView {
         fixedTitleView.backgroundColor = .clear
 
         titleView.alignment = .top
-        titleView.titleLabel.font = UIFont.systemFont(ofSize: 24)
         titleView.titleLabel.numberOfLines = 0
         bodyLabel.numberOfLines = 0
+        bodyLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
         footerContainer.backgroundColor = .white
      

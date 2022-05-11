@@ -16,7 +16,7 @@ import UIKit
         get { imageView.image }
     }
     
-    var size: ImageSize = .tmb44 {
+    var size: ImageSize = .tmb {
         didSet {
             updateView()
             invalidateIntrinsicContentSize()
@@ -50,7 +50,7 @@ import UIKit
         imageView.constraints.forEach(imageView.removeConstraint(_:))
         addSubview(imageView)
         switch size {
-        case .tmb44:
+        case .tmb:
             imageView.layer.cornerRadius = size.height/2
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -59,7 +59,7 @@ import UIKit
                 imageView.heightAnchor.constraint(equalToConstant: size.height)
             ])
             
-        case .image:
+        case .banner:
             NSLayoutConstraint.activate([
                 imageView.heightAnchor.constraint(equalToConstant: size.height),
                 imageView.trailingAnchor.constraint(equalTo: trailingAnchor),

@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     
     @IBAction func openModalAction(_ sender: Any) {
         
-        let size = AndesModalImageView.ImageSize(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb44
+        let size = AndesModalImageView.ImageSize(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb
         let vAlignmet = AndesModalVerticalAlignment(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .center
         let textAling = NSTextAlignment(rawValue: textAlignment.selectedSegmentIndex) ?? .left
         
