@@ -28,7 +28,7 @@ internal class AndesModalViewConfigFactory {
             
         case .fullscreen:
             config.textAlignmet = modal.imageSize == .none ? .left : .center
-            config.verticalAlignmet = modal.imageSize == .none ? .fill : .center
+            config.verticalAlignmet = modal.imageSize == .none ? AndesModalVerticalAlignment.top : AndesModalVerticalAlignment.middle
         }
         
         return config

@@ -11,7 +11,7 @@ struct Page {
     
     let tile: String
     let body: String
-    let header: AndesModalImageView.ImageSize
+    let header: AndesModalImageStyle
     
 }
 
@@ -61,8 +61,8 @@ class ViewController: UIViewController {
     
     @IBAction func openModalAction(_ sender: Any) {
         
-        let size = AndesModalImageView.ImageSize(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb
-        let vAlignmet = AndesModalVerticalAlignment(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .center
+        let size = AndesModalImageStyle(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb
+        let vAlignmet = AndesModalVerticalAlignment(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .middle
         let textAling = NSTextAlignment(rawValue: textAlignment.selectedSegmentIndex) ?? .left
         
         let ty = AndesModalHierarchy(rawValue: displayMode.selectedSegmentIndex) ?? .fullscreen

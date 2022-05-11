@@ -40,6 +40,7 @@
 		78D979FF28236662001EEC87 /* TestViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D979FE28236662001EEC87 /* TestViewUITests.swift */; };
 		78D97A0128236662001EEC87 /* TestViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97A0028236662001EEC87 /* TestViewUITestsLaunchTests.swift */; };
 		78D97A0F2823669F001EEC87 /* AndesModalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97A0E2823669F001EEC87 /* AndesModalImageView.swift */; };
+		FD312179282C671F006BBDAD /* Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD312178282C671F006BBDAD /* Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		78D979FE28236662001EEC87 /* TestViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewUITests.swift; sourceTree = "<group>"; };
 		78D97A0028236662001EEC87 /* TestViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		78D97A0E2823669F001EEC87 /* AndesModalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesModalImageView.swift; sourceTree = "<group>"; };
+		FD312178282C671F006BBDAD /* Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 		78D97A0D28236675001EEC87 /* AndesModal */ = {
 			isa = PBXGroup;
 			children = (
+				FD312177282C6716006BBDAD /* ex */,
 				5C32DC1D282582A100693A66 /* AndesModal.swift */,
 				5C32DC1E282582A100693A66 /* AndesModalAccessibilityManager.swift */,
 				5C32DC21282582D700693A66 /* AndesModalPage.swift */,
@@ -285,6 +288,14 @@
 				5C7337202824482D00B571E5 /* View */,
 			);
 			path = AndesModal;
+			sourceTree = "<group>";
+		};
+		FD312177282C6716006BBDAD /* ex */ = {
+			isa = PBXGroup;
+			children = (
+				FD312178282C671F006BBDAD /* Ex.swift */,
+			);
+			path = ex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +452,7 @@
 				5C32DC1328257B0F00693A66 /* AndesModalHierarchy.swift in Sources */,
 				5C32DC20282582A100693A66 /* AndesModalAccessibilityManager.swift in Sources */,
 				5C32DC1F282582A100693A66 /* AndesModal.swift in Sources */,
+				FD312179282C671F006BBDAD /* Ex.swift in Sources */,
 				5C32DC0928257AFF00693A66 /* AndesModalViewConfig.swift in Sources */,
 				5C73372228244A6D00B571E5 /* UIViewXIB.swift in Sources */,
 				5C46D3AA2825D904005892F7 /* AndesModalBodyView.swift in Sources */,

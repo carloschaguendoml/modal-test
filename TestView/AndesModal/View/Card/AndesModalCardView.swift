@@ -27,7 +27,7 @@ class AndesModalCardView: AndesModalAbstractView {
         dismissButton.transform = .init(translationX: 24/2, y: 0)
         
         // Los card tiene el boton de cerrar por fuera del body
-        contentView.allowCloseButton = false
+        contentView.allowsCloseButton = false
         
         contentView.layoutMargins.top = 0
         contentView.layoutMargins.left = 22

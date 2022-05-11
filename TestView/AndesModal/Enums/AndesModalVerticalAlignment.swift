@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc enum AndesModalVerticalAlignment:Int {
-    case fill
-    case center
+internal enum AndesModalVerticalAlignment: Int {
+    case top
+    case middle
 }

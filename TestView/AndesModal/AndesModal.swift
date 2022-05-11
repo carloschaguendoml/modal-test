@@ -21,7 +21,7 @@ import UIKit
     
     @objc public var allowsDismissButton = true
     
-    internal var imageSize: AndesModalImageView.ImageSize
+    internal var imageSize: AndesModalImageStyle
     
     internal var textAlignmet: NSTextAlignment
     
@@ -41,11 +41,11 @@ import UIKit
     }
     
     internal init(type: AndesModalHierarchy,
-                  imageSize: AndesModalImageView.ImageSize = .ilustration160,
+                  imageSize: AndesModalImageStyle = .ilustration160,
                   stickHeader: Bool = true,
                   stickFooter: Bool = true,
                   allowsDismissButton: Bool = true,
-                  vertical: AndesModalVerticalAlignment = .fill,
+                  vertical: AndesModalVerticalAlignment = .top,
                   textAlignmet: NSTextAlignment = .left,
                   pages: [AndesModalPage]) {
         self.stickFooter = stickFooter

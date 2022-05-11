@@ -1,76 +1,75 @@
 //
-//  AndesModalPageHeaderView.swift
+//  AndesModalImageView.swift
 //  AndesUI
 //
-//  Created by Carlos Chaguendo on 4/05/22.
+//  Created by Carlos Andres Chaguendo Sanchez on 11/05/22.
 //
 
 import UIKit
 
-@IBDesignable internal class AndesModalImageView: UIView {
-    
+internal class AndesModalImageView: UIView {
     private let imageView = UIImageView()
-    
-    @IBInspectable var image: UIImage? {
-        set { imageView.image = newValue}
+
+    var image: UIImage? {
         get { imageView.image }
+        set { imageView.image = newValue }
     }
-    
-    var size: ImageSize = .tmb {
+
+    var imageStyle: AndesModalImageStyle = .tmb {
         didSet {
             updateView()
             invalidateIntrinsicContentSize()
         }
     }
-    
+
     init() {
         super.init(frame: .zero)
         setup()
         updateView()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-    
+
     private func setup() {
         layoutMargins = .zero
         preservesSuperviewLayoutMargins = false
-        
+
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .green
     }
-    
+
     private func updateView() {
         imageView.layer.cornerRadius = 0
         imageView.removeFromSuperview()
         imageView.constraints.forEach(imageView.removeConstraint(_:))
         addSubview(imageView)
-        switch size {
+        switch imageStyle {
         case .tmb:
-            imageView.layer.cornerRadius = size.height/2
+            imageView.layer.cornerRadius = imageStyle.height / 2
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: size.height),
-                imageView.heightAnchor.constraint(equalToConstant: size.height)
+                imageView.widthAnchor.constraint(equalToConstant: imageStyle.height),
+                imageView.heightAnchor.constraint(equalToConstant: imageStyle.height)
             ])
-            
+
         case .banner:
             NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: size.height),
+                imageView.heightAnchor.constraint(equalToConstant: imageStyle.height),
                 imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
                 imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 imageView.topAnchor.constraint(equalTo: topAnchor),
                 imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
-            
+
         default:
             NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: size.height),
+                imageView.heightAnchor.constraint(equalToConstant: imageStyle.height),
                 imageView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
                 imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
                 imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
@@ -78,18 +77,17 @@ import UIKit
             ])
         }
     }
-    
+
     override var intrinsicContentSize: CGSize {
         if isHidden {
             return .zero
         }
-        let height = layoutMargins.vertical + size.height
+
+        if case .none = imageStyle {
+            return .zero
+        }
+        let height = layoutMargins.vertically + imageStyle.height
         return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
-       
 }
 
-extension UIEdgeInsets {
-    var horizontal: CGFloat { self.left + self.right }
-    var vertical: CGFloat { self.top + self.bottom }
-}
