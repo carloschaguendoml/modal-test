@@ -21,6 +21,16 @@ internal class AndesModalViewConfigFactory {
         config.textAlignmet =  modal.textAlignmet
         config.source = modal.pages
         config.allowsDismissButton = modal.allowsDismissButton
+        
+        switch modal.hierarchy {
+        case .card:
+            config.textAlignmet = .center
+            
+        case .fullscreen:
+            config.textAlignmet = modal.imageSize == .none ? .left : .center
+            config.verticalAlignmet = modal.imageSize == .none ? .fill : .center
+        }
+        
         return config
     }
 }

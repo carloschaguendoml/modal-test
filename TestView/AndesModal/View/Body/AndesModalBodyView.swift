@@ -176,7 +176,7 @@ internal class AndesModalBodyView: UIScrollView {
                 fixedTitleView.topAnchor.constraint(equalTo: topFixedAnchor),
                 imageView.topAnchor.constraint(equalTo: topAnchor)
             ])
-            contentInset.top = imageSize == .none ? 0 : 64
+            contentInset.top = imageSize == .none ? 0 : fixedTitleView.kHeight
         } else {
             NSLayoutConstraint.activate([
                 fixedTitleView.topAnchor.constraint(equalTo: topAnchor),
@@ -200,7 +200,7 @@ internal class AndesModalBodyView: UIScrollView {
         ])
         
         if isStickFooterEnabled {
-            contentInset.bottom = height
+            contentInset.bottom = height + layoutMargins.bottom
             NSLayoutConstraint.activate([
                 bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
                 footer.bottomAnchor.constraint(equalTo: bottomFixedAnchor),
@@ -209,7 +209,7 @@ internal class AndesModalBodyView: UIScrollView {
         } else {
             NSLayoutConstraint.activate([
                 footer.bottomAnchor.constraint(equalTo: bottomAnchor),
-                footer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor),
+                footer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: layoutMargins.bottom),
             ])
         }
     }
