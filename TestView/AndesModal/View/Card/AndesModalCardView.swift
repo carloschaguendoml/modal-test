@@ -23,7 +23,7 @@ class AndesModalCardView: AndesModalAbstractView {
         dismissButton.setTitle("", for: .normal)
         dismissButton.setImage(icon, for: .normal)
         dismissButton.tintColor = .white
-        dismissButton.isHidden = !config.allowsDismissButton
+        dismissButton.isHidden = !config.allowsCloseButton
         dismissButton.transform = .init(translationX: 24/2, y: 0)
         
         // Los card tiene el boton de cerrar por fuera del body

@@ -10,12 +10,12 @@
 import Foundation
 
 internal class AndesModalHierarchyFactory {
-    static func provide(_ hierarchy: AndesModalHierarchy) -> AndesModalHierarchyProtocol {
+    static func provide(_ hierarchy: AndesModalType) -> AndesModalTypeProtocol {
         switch hierarchy {
         case .card:
-            return AndesModalHierarchyCard()
+            return AndesModalTypeCard()
         case .fullscreen:
-            return AndesModalHierarchyFullScreen()
+            return AndesModalTypeFullScreen()
         }
     }
 }

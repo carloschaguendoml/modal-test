@@ -9,7 +9,7 @@
 
 import UIKit
 
-struct AndesModalHierarchyFullScreen: AndesModalHierarchyProtocol {
+struct AndesModalTypeFullScreen: AndesModalTypeProtocol {
     var overlayColor = UIColor.white
     var cornerRadius = CGFloat.zero
 }

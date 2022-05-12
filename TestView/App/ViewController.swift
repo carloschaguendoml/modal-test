@@ -18,8 +18,6 @@ struct Page {
 class ViewController: UIViewController {
     
     @IBOutlet weak var ilustrationStyle: UISegmentedControl!
-    @IBOutlet weak var verticalAlignmetControl: UISegmentedControl!
-    @IBOutlet weak var textAlignment: UISegmentedControl!
     @IBOutlet weak var displayMode: UISegmentedControl!
     @IBOutlet weak var textContent: UISegmentedControl!
     @IBOutlet weak var titleContent: UISegmentedControl!
@@ -62,10 +60,7 @@ class ViewController: UIViewController {
     @IBAction func openModalAction(_ sender: Any) {
         
         let size = AndesModalImageStyle(rawValue: ilustrationStyle.selectedSegmentIndex) ?? .tmb
-        let vAlignmet = AndesModalVerticalAlignment(rawValue: verticalAlignmetControl.selectedSegmentIndex) ?? .middle
-        let textAling = NSTextAlignment(rawValue: textAlignment.selectedSegmentIndex) ?? .left
-        
-        let ty = AndesModalHierarchy(rawValue: displayMode.selectedSegmentIndex) ?? .fullscreen
+        let ty = AndesModalType(rawValue: displayMode.selectedSegmentIndex) ?? .fullscreen
         
         let text: String
         switch textContent.selectedSegmentIndex {
@@ -83,12 +78,10 @@ class ViewController: UIViewController {
         
         modal = AndesModal(
             type: ty,
-            imageSize: size,
-            stickHeader: fixHeader.isOn,
-            stickFooter: fixFooter.isOn,
-            allowsDismissButton: allowsDismissButton.isOn,
-            vertical: vAlignmet,
-            textAlignmet: textAling,
+            imageStyle: size,
+            isFixedTitleEnabled: fixHeader.isOn,
+            isFixedFooterEnabled: fixFooter.isOn,
+            allowsCloseButton: allowsDismissButton.isOn,
             pages: [AndesModalPage(title: title, body: text)]
         )
         modal?.show(in: self)

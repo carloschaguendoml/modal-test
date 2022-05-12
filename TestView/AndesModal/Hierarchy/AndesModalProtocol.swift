@@ -9,7 +9,7 @@
 
 import UIKit
 
-internal protocol AndesModalHierarchyProtocol {
+internal protocol AndesModalTypeProtocol {
     var overlayColor: UIColor { get }
     var cornerRadius: CGFloat { get }
 }

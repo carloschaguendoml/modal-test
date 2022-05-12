@@ -13,22 +13,20 @@ import UIKit
 /// used to define the ui of internal AndesModal views
 internal struct AndesModalViewConfig {
     
-    var layout: AndesModalHierarchyProtocol
-    var imageSize: AndesModalImageStyle = .ilustration128
-    var stickHeader = false
-    var stickFooter = false
+    var layout: AndesModalTypeProtocol
+    var imageStyle: AndesModalImageStyle = .ilustration128
+    var isFixedTitleEnabled = false
+    var isFixedFooterEnabled = false
     var textAlignmet = NSTextAlignment.left
     var verticalAlignmet = AndesModalVerticalAlignment.middle
-    
     var source: [AndesModalPage] = []
-    
-    var allowsDismissButton = true
+    var allowsCloseButton = true
     
     init() {
-        layout = AndesModalHierarchyCard()
+        layout = AndesModalTypeCard()
     }
 
-    init(hierarchy: AndesModalHierarchyProtocol) {
+    init(hierarchy: AndesModalTypeProtocol) {
         self.layout = hierarchy
     }
 }

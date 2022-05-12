@@ -13,47 +13,32 @@ import UIKit
     
     internal var contentView:  AndesModalView!
     
-    @objc public var hierarchy: AndesModalHierarchy = .card
+    @objc public var hierarchy: AndesModalType = .card
 
-    @objc public var stickHeader: Bool
+    @objc public var isFixedTitleEnabled: Bool
     
-    @objc public var stickFooter: Bool
+    @objc public var isFixedFooterEnabled: Bool
     
-    @objc public var allowsDismissButton = true
+    @objc public var allowsCloseButton = true
     
-    internal var imageSize: AndesModalImageStyle
-    
-    internal var textAlignmet: NSTextAlignment
-    
-    internal var verticalAlignmet: AndesModalVerticalAlignment
-    
+    internal var imageStyle: AndesModalImageStyle
+
     internal var pages: [AndesModalPage] = []
-    
-    var accessibilityManager: AndesModalAccessibilityManager?
-    
-    override public func accessibilityActivate() -> Bool {
-        return accessibilityManager?.accessibilityActivated() != nil
-    }
 
-
-    public convenience init(type: AndesModalHierarchy, pages: AndesModalPage...) {
+    public convenience init(type: AndesModalType, pages: AndesModalPage...) {
         self.init(type: type, pages: pages)
     }
     
-    internal init(type: AndesModalHierarchy,
-                  imageSize: AndesModalImageStyle = .ilustration160,
-                  stickHeader: Bool = true,
-                  stickFooter: Bool = true,
-                  allowsDismissButton: Bool = true,
-                  vertical: AndesModalVerticalAlignment = .top,
-                  textAlignmet: NSTextAlignment = .left,
+    internal init(type: AndesModalType,
+                  imageStyle: AndesModalImageStyle = .ilustration160,
+                  isFixedTitleEnabled: Bool = true,
+                  isFixedFooterEnabled: Bool = true,
+                  allowsCloseButton: Bool = true,
                   pages: [AndesModalPage]) {
-        self.stickFooter = stickFooter
-        self.stickHeader = stickHeader
-        self.imageSize = imageSize
-        self.verticalAlignmet = vertical
-        self.textAlignmet = textAlignmet
-        self.allowsDismissButton = allowsDismissButton
+        self.isFixedTitleEnabled = isFixedTitleEnabled
+        self.isFixedFooterEnabled = isFixedFooterEnabled
+        self.imageStyle = imageStyle
+        self.allowsCloseButton = allowsCloseButton
         self.pages = pages
         super.init()
         self.hierarchy = type
@@ -72,7 +57,6 @@ import UIKit
     private func updateContentView() {
         let config = AndesModalViewConfigFactory.provideInternalConfig(for: self)
         contentView.update(withConfig: config)
-        accessibilityManager?.viewUpdated()
     }
 
     private func provideView() -> AndesModalView {

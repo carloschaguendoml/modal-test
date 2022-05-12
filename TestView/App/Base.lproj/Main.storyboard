@@ -79,44 +79,6 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="AEV-hx-xyh" userLabel="V alignment">
-                                        <rect key="frame" x="0.0" y="146" width="122.5" height="12"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vertical Aligmnet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C30-Kt-0wE">
-                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lsf-oT-9rr">
-                                                <rect key="frame" x="0.0" y="12" width="122.5" height="1"/>
-                                                <segments>
-                                                    <segment title="Top"/>
-                                                    <segment title="Middle"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dw9-KI-UwW" userLabel="text alig">
-                                        <rect key="frame" x="0.0" y="146" width="291" height="12"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Alignment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqX-TZ-bRz">
-                                                <rect key="frame" x="0.0" y="0.0" width="291" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-lw-Z7T">
-                                                <rect key="frame" x="0.0" y="12" width="291" height="1"/>
-                                                <segments>
-                                                    <segment title="Left"/>
-                                                    <segment title="Center"/>
-                                                    <segment title="Right"/>
-                                                    <segment title="Justified"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-0J-N6X" userLabel="title">
                                         <rect key="frame" x="0.0" y="154" width="206" height="61"/>
                                         <subviews>
@@ -232,10 +194,8 @@
                         <outlet property="fixFooter" destination="F7f-zV-ZOl" id="0fl-Mz-4g8"/>
                         <outlet property="fixHeader" destination="IoT-6h-5Us" id="xsT-hb-ptH"/>
                         <outlet property="ilustrationStyle" destination="kYW-rC-20D" id="Ezn-89-A2G"/>
-                        <outlet property="textAlignment" destination="DJt-lw-Z7T" id="na7-aQ-eku"/>
                         <outlet property="textContent" destination="ZPe-vY-qme" id="frO-7Z-fnH"/>
                         <outlet property="titleContent" destination="sh1-Ht-qJD" id="Yt1-gg-nUM"/>
-                        <outlet property="verticalAlignmetControl" destination="lsf-oT-9rr" id="7Ki-Fm-2hX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

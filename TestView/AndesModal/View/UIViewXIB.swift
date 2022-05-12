@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 @IBDesignable internal class UIViewXIB: UIView {
     
     internal var componentView: UIView!
@@ -22,7 +21,7 @@ import UIKit
         xibSetup()
     }
     
-    /// Por defecto intenta cargar un .xib que coincida con el nombre de la clase
+    /// By default it tries to load an .xib matching the class name
     internal func loadNib() {
         let type = type(of: self)
         let bundle = Bundle(for: type)
@@ -49,7 +48,4 @@ import UIKit
         loadNib()
         pinXibViewToSelf()
     }
-    
-    
-    
 }

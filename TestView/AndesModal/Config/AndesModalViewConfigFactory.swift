@@ -14,21 +14,20 @@ internal class AndesModalViewConfigFactory {
     static func provideInternalConfig(for modal: AndesModal) -> AndesModalViewConfig {
         let hierarchyIns = AndesModalHierarchyFactory.provide(modal.hierarchy)
         var config = AndesModalViewConfig(hierarchy: hierarchyIns)
-        config.imageSize = modal.imageSize
-        config.stickHeader = modal.stickHeader
-        config.stickFooter = modal.stickFooter
-        config.verticalAlignmet = modal.verticalAlignmet
-        config.textAlignmet =  modal.textAlignmet
+        config.imageStyle = modal.imageStyle
+        config.isFixedTitleEnabled = modal.isFixedTitleEnabled
+        config.isFixedFooterEnabled = modal.isFixedFooterEnabled
         config.source = modal.pages
-        config.allowsDismissButton = modal.allowsDismissButton
+        config.allowsCloseButton = modal.allowsCloseButton
         
         switch modal.hierarchy {
         case .card:
             config.textAlignmet = .center
+            config.verticalAlignmet = .top
             
         case .fullscreen:
-            config.textAlignmet = modal.imageSize == .none ? .left : .center
-            config.verticalAlignmet = modal.imageSize == .none ? AndesModalVerticalAlignment.top : AndesModalVerticalAlignment.middle
+            config.textAlignmet = modal.imageStyle == .none ? .left : .center
+            config.verticalAlignmet = modal.imageStyle == .none ? AndesModalVerticalAlignment.top : AndesModalVerticalAlignment.middle
         }
         
         return config

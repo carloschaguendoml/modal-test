@@ -9,7 +9,7 @@
 
 import UIKit
 
-struct AndesModalHierarchyCard: AndesModalHierarchyProtocol {
+struct AndesModalTypeCard: AndesModalTypeProtocol {
     var overlayColor = UIColor.black.withAlphaComponent(0.8)
     var cornerRadius: CGFloat = 12.0
 }

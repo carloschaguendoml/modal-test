@@ -10,7 +10,7 @@
 import Foundation
 
 /// Used to define the style of an AndesModal
-@objc public enum AndesModalHierarchy: Int {
+@objc public enum AndesModalType: Int {
     case card
     case fullscreen
 }

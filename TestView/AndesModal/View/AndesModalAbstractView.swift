@@ -34,20 +34,18 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
     }
 
     func setup() {
-       // super.xibSetup()
         translatesAutoresizingMaskIntoConstraints = false
         updateView()
     }
 
-    /// Override this method on each Badge View to setup its unique components
     func updateView() {
         self.backgroundColor = config.layout.overlayColor
-        contentView.allowsCloseButton = config.allowsDismissButton
-        contentView.imageStyle = config.imageSize
+        contentView.allowsCloseButton = config.allowsCloseButton
+        contentView.imageStyle = config.imageStyle
         contentView.distribution = config.verticalAlignmet
         contentView.textAlignment = config.textAlignmet
-        contentView.isFixedTitleEnabled = config.stickHeader
-        contentView.isFixedFooterEnabled = config.stickFooter
+        contentView.isFixedTitleEnabled = config.isFixedTitleEnabled
+        contentView.isFixedFooterEnabled = config.isFixedFooterEnabled
         
         if let source = config.source.first {
             contentView.title = source.title
@@ -57,9 +55,6 @@ class AndesModalAbstractView: UIViewXIB, AndesModalView {
         contentView.clipsToBounds = true
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = config.layout.cornerRadius
-        
-//        contentView.fixedTitleView.closeButton.addTarget(self, action: #selector(dissmisAction(_:)), for: .touchUpInside)
-//        contentView.titleView.closeButton.addTarget(self, action: #selector(dissmisAction(_:)), for: .touchUpInside)
     }
     
     @IBAction func dissmisAction(_ sender: Any) {
