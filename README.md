@@ -6,7 +6,9 @@ let exitButton = AndesButton()
 
 AndesModalBuilder(type: .fullscreen)
   .imageStyle(.thumbnail)
-  .dissmisable(true)
+  .dissmisable(false)
+  .fixedTitle(false)
+  .fixedFooter(false)
   .content(
       AndesModalPage(
         image: AndesModalImage { completion in
@@ -15,8 +17,9 @@ AndesModalBuilder(type: .fullscreen)
         title: "...",
         body: ".."
       )
-  ).withAction(saveButton, exitButton, distributtion: .horizontal)
+  )
+  .withAction(saveButton, exitButton, distributtion: .horizontal)
   .build()
-   .show(in: self)
+  .show(in: self)
 ```
 
